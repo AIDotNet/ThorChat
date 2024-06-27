@@ -1,6 +1,6 @@
-export const LOBE_CHAT_TRACE_HEADER = 'X-lobe-trace';
-export const LOBE_CHAT_TRACE_ID = 'X-lobe-chat-trace-id';
-export const LOBE_CHAT_OBSERVATION_ID = 'X-lobe-observation-id';
+export const THOR_CHAT_TRACE_HEADER = 'X-lobe-trace';
+export const THOR_CHAT_TRACE_ID = 'X-lobe-chat-trace-id';
+export const THOR_CHAT_OBSERVATION_ID = 'X-lobe-observation-id';
 
 export enum TraceNameMap {
   ConnectivityChecker = 'Connectivity Checker',

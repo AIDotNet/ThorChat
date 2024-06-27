@@ -2,7 +2,7 @@ import { fetchEventSource } from '@microsoft/fetch-event-source';
 import { t } from 'i18next';
 import { produce } from 'immer';
 
-import { LOBE_CHAT_OBSERVATION_ID, LOBE_CHAT_TRACE_ID } from '@/const/trace';
+import { THOR_CHAT_OBSERVATION_ID, THOR_CHAT_TRACE_ID } from '@/const/trace';
 import { ErrorResponse, ErrorType } from '@/types/fetch';
 import {
   ChatMessageError,
@@ -308,63 +308,49 @@ export const fetchSSE = async (url: string, options: RequestInit & FetchSSEOptio
         let data;
         try {
           data = JSON.parse(ev.data);
-          if (data) {
-            const content = data.choices[0].delta?.content;
-            if (content) {
-              if (smoothing) {
-                textController.pushToQueue(content);
-                if (!textController.isAnimationActive) textController.startAnimation();
-              } else {
-                output += content;
-                options.onMessageHandle?.({ text: content, type: 'text' });
-              }
-            }
-
-          }
-          return;
         } catch (e) {
           console.warn('parse error, fallback to stream', e);
           options.onMessageHandle?.({ text: data, type: 'text' });
           return;
         }
 
-        // switch (ev.event) {
-        //   case 'text': {
-        //     if (smoothing) {
-        //       textController.pushToQueue(data);
+        switch (ev.event) {
+          case 'text': {
+            if (smoothing) {
+              textController.pushToQueue(data);
 
-        //       if (!textController.isAnimationActive) textController.startAnimation();
-        //     } else {
-        //       output += data;
-        //       options.onMessageHandle?.({ text: data, type: 'text' });
-        //     }
+              if (!textController.isAnimationActive) textController.startAnimation();
+            } else {
+              output += data;
+              options.onMessageHandle?.({ text: data, type: 'text' });
+            }
 
-        //     break;
-        //   }
+            break;
+          }
 
-        //   case 'tool_calls': {
-        //     // get finial
-        //     // if there is no tool calls, we should initialize the tool calls
-        //     if (!toolCalls) toolCalls = [];
-        //     toolCalls = parseToolCalls(toolCalls, data);
+          case 'tool_calls': {
+            // get finial
+            // if there is no tool calls, we should initialize the tool calls
+            if (!toolCalls) toolCalls = [];
+            toolCalls = parseToolCalls(toolCalls, data);
 
-        //     if (smoothing) {
-        //       // make the tool calls smooth
+            if (smoothing) {
+              // make the tool calls smooth
 
-        //       // push the tool calls to the smooth queue
-        //       toolCallsController.pushToQueue(data);
-        //       // if there is no animation active, we should start the animation
-        //       if (toolCallsController.isAnimationActives.some((value) => !value)) {
-        //         toolCallsController.startAnimations();
-        //       }
-        //     } else {
-        //       options.onMessageHandle?.({
-        //         tool_calls: toolCalls,
-        //         type: 'tool_calls',
-        //       });
-        //     }
-        //   }
-        // }
+              // push the tool calls to the smooth queue
+              toolCallsController.pushToQueue(data);
+              // if there is no animation active, we should start the animation
+              if (toolCallsController.isAnimationActives.some((value) => !value)) {
+                toolCallsController.startAnimations();
+              }
+            } else {
+              options.onMessageHandle?.({
+                tool_calls: toolCalls,
+                type: 'tool_calls',
+              });
+            }
+          }
+        }
       },
       onopen: async (res) => {
         response = res.clone();
@@ -393,8 +379,8 @@ export const fetchSSE = async (url: string, options: RequestInit & FetchSSEOptio
         options.onMessageHandle?.({ text: output, type: 'text' });
       }
 
-      const traceId = response.headers.get(LOBE_CHAT_TRACE_ID);
-      const observationId = response.headers.get(LOBE_CHAT_OBSERVATION_ID);
+      const traceId = response.headers.get(THOR_CHAT_TRACE_ID);
+      const observationId = response.headers.get(THOR_CHAT_OBSERVATION_ID);
 
       if (textController.isTokenRemain()) {
         await textController.startAnimation(15);

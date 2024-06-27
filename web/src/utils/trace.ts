@@ -1,7 +1,7 @@
-import { LOBE_CHAT_TRACE_HEADER, LOBE_CHAT_TRACE_ID, TracePayload } from '@/const/trace';
+import { THOR_CHAT_TRACE_HEADER, THOR_CHAT_TRACE_ID, TracePayload } from '@/const/trace';
 
 export const getTracePayload = (req: Request): TracePayload | undefined => {
-  const header = req.headers.get(LOBE_CHAT_TRACE_HEADER);
+  const header = req.headers.get(THOR_CHAT_TRACE_HEADER);
   if (!header) return;
 
   const decoder = new TextDecoder('utf-8');
@@ -10,7 +10,7 @@ export const getTracePayload = (req: Request): TracePayload | undefined => {
   return JSON.parse(decodedHeader);
 };
 
-export const getTraceId = (res: Response) => res.headers.get(LOBE_CHAT_TRACE_ID);
+export const getTraceId = (res: Response) => res.headers.get(THOR_CHAT_TRACE_ID);
 
 const createTracePayload = (data: TracePayload) => {
   const encoder = new TextEncoder();
@@ -20,7 +20,7 @@ const createTracePayload = (data: TracePayload) => {
 };
 
 export const createTraceHeader = (data: TracePayload) => {
-  return { [LOBE_CHAT_TRACE_HEADER]: createTracePayload(data) };
+  return { [THOR_CHAT_TRACE_HEADER]: createTracePayload(data) };
 };
 
 // Helper functions

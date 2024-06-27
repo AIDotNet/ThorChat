@@ -45,7 +45,7 @@ const Page = memo<{ mobile?: boolean }>(({ mobile }) => {
 
   return (
     <>
-      <Form.Group style={{ width: '100%' }} title={`${t('about')} LobeChat`} variant={'pure'}>
+      <Form.Group style={{ width: '100%' }} title={`${t('about')} TokenChat`} variant={'pure'}>
         <Flexbox gap={20} paddingBlock={20} width={'100%'}>
           <div className={styles.title}>{t('version')}</div>
           <Version mobile={mobile} />

@@ -1,4 +1,4 @@
-import { LOBE_CHAT_ACCESS_CODE, OPENAI_API_KEY_HEADER_KEY, OPENAI_END_POINT } from '@/const/fetch';
+import { THOR_CHAT_ACCESS_CODE, OPENAI_API_KEY_HEADER_KEY, OPENAI_END_POINT } from '@/const/fetch';
 import { useUserStore } from '@/store/user';
 import { keyVaultsConfigSelectors } from '@/store/user/selectors';
 
@@ -13,7 +13,7 @@ export const createHeaderWithOpenAI = (header?: HeadersInit): HeadersInit => {
   // eslint-disable-next-line no-undef
   return {
     ...header,
-    [LOBE_CHAT_ACCESS_CODE]: keyVaultsConfigSelectors.password(useUserStore.getState()),
+    [THOR_CHAT_ACCESS_CODE]: keyVaultsConfigSelectors.password(useUserStore.getState()),
     [OPENAI_API_KEY_HEADER_KEY]: openAIConfig.apiKey || '',
     [OPENAI_END_POINT]: openAIConfig.baseURL || '',
   };

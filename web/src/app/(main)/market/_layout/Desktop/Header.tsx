@@ -1,5 +1,4 @@
 import { ChatHeader } from '@lobehub/ui';
-import { LobeChat } from '@lobehub/ui/brand';
 import { createStyles } from 'antd-style';
 import { memo } from 'react';
 
@@ -17,7 +16,15 @@ const Header = memo(() => {
 
   return (
     <ChatHeader
-      left={<LobeChat className={styles.logo} extra={'Discover'} size={36} type={'text'} />}
+      left={<span style={{
+        fontSize: '24px',
+        fontWeight: 'bold',
+        fontFamily: 'Arial, sans-serif',
+        userSelect: 'none',
+        color: 'var(--leva-colors-highlight3)',
+      }}>
+        TokenChat
+      </span>}
       right={<ShareAgentButton />}
     />
   );

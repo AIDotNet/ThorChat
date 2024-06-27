@@ -1,4 +1,5 @@
-import { JWTPayload, LOBE_CHAT_AUTH_HEADER } from '@/const/auth';
+import { JWTPayload, THOR_CHAT_AUTH_HEADER } from '@/const/auth';
+import { THOR_CHAT_ACCESS_CODE } from '@/const/fetch';
 import { ModelProvider } from '@/libs/agent-runtime';
 import { useUserStore } from '@/store/user';
 import { keyVaultsConfigSelectors, userProfileSelectors } from '@/store/user/selectors';
@@ -53,17 +54,6 @@ const createAuthTokenWithPayload = async (payload = {}) => {
   return await createJWT<JWTPayload>({ accessCode, userId, ...payload });
 };
 
-const createAuthToken = () => {
-  const tokne = localStorage.getItem('token') || '';
-  if (tokne) {
-    return tokne;
-  }
-
-  window.location.href = 'https://api.token-ai.cn/login?redirect_uri=' + window.location.origin + "/auth";
-
-  return '';
-};
-
 interface AuthParams {
   // eslint-disable-next-line no-undef
   headers?: HeadersInit;
@@ -79,9 +69,8 @@ export const createHeaderWithAuth = async (params?: AuthParams): Promise<Headers
     payload = { ...payload, ...getProviderAuthPayload(params?.provider) };
   }
 
-  // const token = await createAuthTokenWithPayload(payload);
-  const token = createAuthToken();
+  const token = await createAuthTokenWithPayload(payload);
 
   // eslint-disable-next-line no-undef
-  return { ...params?.headers, [LOBE_CHAT_AUTH_HEADER]: token };
+  return { ...params?.headers, [THOR_CHAT_AUTH_HEADER]: token };
 };

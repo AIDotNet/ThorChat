@@ -1,5 +1,4 @@
 import { Avatar, ChatHeaderTitle, Markdown } from '@lobehub/ui';
-import { LobeChat } from '@lobehub/ui/brand';
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
@@ -63,7 +62,15 @@ const Preview = memo<FieldType & { title?: string }>(
             <ChatList />
             {withFooter ? (
               <Flexbox align={'center'} className={styles.footer} gap={4}>
-                <LobeChat type={'combine'} />
+                <span style={{
+                  fontSize: '24px',
+                  fontWeight: 'bold',
+                  fontFamily: 'Arial, sans-serif',
+                  userSelect: 'none',
+                  color: 'var(--leva-colors-highlight3)',
+                }}>
+                  TokenChat
+                </span>
                 <div className={styles.url}>{pkg.homepage}</div>
               </Flexbox>
             ) : (

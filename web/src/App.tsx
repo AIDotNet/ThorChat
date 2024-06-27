@@ -19,6 +19,10 @@ import SettingAbout from "./app/(main)/settings/about/page"
 import MarketLayout from './app/(main)/market/layout'
 import MarketPage from './app/(main)/market/page'
 import Auth from './app/auth/page'
+import MeLayout from '@/app/(main)/(mobile)/me/(home)/layout'
+import MePage from '@/app/(main)/(mobile)/me/(home)/page'
+import MeDataPage from '@/app/(main)/(mobile)/me/data/page'
+import MeDataLayout from '@/app/(main)/(mobile)/me/data/layout'
 
 const originalConsoleError = console.error;
 console.error = (...args) => {
@@ -32,6 +36,22 @@ const router = createBrowserRouter([
   {
     element: <RootLayout></RootLayout>,
     children: [
+      {
+        path: '/me',
+        element: <MainLayout>
+          <MeLayout>
+            <MePage />
+          </MeLayout>
+        </MainLayout>
+      },
+      {
+        path: '/me/data',
+        element: <MainLayout>
+          <MeDataLayout>
+            <MeDataPage />
+          </MeDataLayout>
+        </MainLayout>
+      },
       {
         path: '',
         element: <MainLayout>

@@ -21,7 +21,7 @@ const SelectWithTTSPreview = forwardRef<RefSelectProps, SelectWithTTSPreviewProp
     const [voice, setVoice] = useState<string>(value);
     const { t } = useTranslation('welcome');
     const theme = useTheme();
-    const PREVIEW_TEXT = ['Lobe Chat', t('slogan.title'), t('slogan.desc1')].join('. ');
+    const PREVIEW_TEXT = ['Token Chat', t('slogan.title'), t('slogan.desc1')].join('. ');
 
     const setDefaultError = useCallback(
       (err?: any) => {

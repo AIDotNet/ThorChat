@@ -23,7 +23,7 @@ import {
   dbSchemaV7,
   dbSchemaV9,
 } from './schemas';
-import { DBModel, LOBE_CHAT_LOCAL_DB_NAME } from './types/db';
+import { DBModel, THOR_CHAT_LOCAL_DB_NAME } from './types/db';
 
 export interface LobeDBSchemaMap {
   files: DB_File;
@@ -46,7 +46,7 @@ export class BrowserDB extends Dexie {
   public users: BrowserDBTable<'users'>;
 
   constructor() {
-    super(LOBE_CHAT_LOCAL_DB_NAME);
+    super(THOR_CHAT_LOCAL_DB_NAME);
     this.version(1).stores(dbSchemaV1);
     this.version(2).stores(dbSchemaV2);
     this.version(3).stores(dbSchemaV3);

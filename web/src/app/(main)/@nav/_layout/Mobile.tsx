@@ -5,7 +5,7 @@ import { createStyles } from 'antd-style';
 import { Compass, MessageSquare, User } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { rgba } from 'polished';
-import { memo, useMemo } from 'react';
+import { memo, startTransition, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useActiveTabKey } from '@/hooks/useActiveTabKey';
@@ -39,7 +39,9 @@ const Nav = memo(() => {
         ),
         key: SidebarTabKey.Chat,
         onClick: () => {
-          navigate('/chat');
+          startTransition(() => {
+            navigate('/chat');
+          });
         },
         title: t('tab.chat'),
       },
@@ -47,7 +49,9 @@ const Nav = memo(() => {
         icon: (active) => <Icon className={active ? styles.active : undefined} icon={Compass} />,
         key: SidebarTabKey.Market,
         onClick: () => {
-          navigate('/market');
+          startTransition(() => {
+            navigate('/market');
+          });
         },
         title: t('tab.market'),
       },
@@ -55,7 +59,9 @@ const Nav = memo(() => {
         icon: (active) => <Icon className={active ? styles.active : undefined} icon={User} />,
         key: SidebarTabKey.Me,
         onClick: () => {
-          navigate('/me');
+          startTransition(() => {
+            navigate('/me');
+          });
         },
         title: t('tab.me'),
       },

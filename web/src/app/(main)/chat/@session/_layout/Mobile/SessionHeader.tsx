@@ -1,7 +1,6 @@
 
 
 import { ActionIcon, MobileNavBar } from '@lobehub/ui';
-import { LobeChat } from '@lobehub/ui/brand';
 import { MessageSquarePlus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { memo } from 'react';
@@ -24,7 +23,15 @@ const Header = memo(() => {
       left={
         <Flexbox align={'center'} gap={8} horizontal style={{ marginLeft: 8 }}>
           <UserAvatar onClick={() => navigate('/me')} size={32} />
-          <LobeChat type={'text'} />
+          <span style={{
+            fontSize: '24px',
+            fontWeight: 'bold',
+            fontFamily: 'Arial, sans-serif',
+            userSelect: 'none',
+            color: 'var(--leva-colors-highlight3)',
+          }}>
+            TokenChat
+          </span>
           {enableWebrtc && <SyncStatusInspector placement={'bottom'} />}
         </Flexbox>
       }

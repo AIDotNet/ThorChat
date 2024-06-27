@@ -9,7 +9,7 @@ export enum LobeSessionType {
 }
 
 /**
- * Lobe Agent
+ * Token Agent
  */
 export interface LobeAgentSession {
   config: LobeAgentConfig;

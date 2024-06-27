@@ -5,7 +5,7 @@ import type { ItemType } from 'antd/es/menu/interface';
 import isEqual from 'fast-deep-equal';
 import { LucideArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { PropsWithChildren, memo, useMemo } from 'react';
+import { PropsWithChildren, memo, startTransition, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
 
@@ -74,7 +74,7 @@ const ModelSwitchPanel = memo<PropsWithChildren>(({ children }) => {
               </Flexbox>
             ),
             onClick: () => {
-              navigate(withBasePath('/settings/llm'));
+              startTransition(() => {navigate(withBasePath('/settings/llm'));});
             },
           },
         ];

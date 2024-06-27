@@ -12,4 +12,4 @@ export const DBBaseFieldsSchema = z.object({
   updatedAt: z.number().or(z.string()),
 });
 
-export const LOBE_CHAT_LOCAL_DB_NAME = 'LOBE_CHAT_DB';
+export const THOR_CHAT_LOCAL_DB_NAME = 'THOR_CHAT_DB';

@@ -27,9 +27,9 @@ const Page = async () => {
 
   return (
     <>
-      {/* <StructuredData ld={ld} />
+      <StructuredData ld={ld} />
       <PageTitle />
-      <TelemetryNotification mobile={mobile} /> */}
+      <TelemetryNotification mobile={mobile} />
     </>
   );
 };

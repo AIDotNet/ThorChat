@@ -5,6 +5,7 @@ import { transform } from 'lodash-es';
 
 import { withBasePath } from '@/utils/basePath';
 import { ModelProvider } from '@/libs/agent-runtime';
+import { VITE_API_URL } from '@/utils/env';
 
 const mapWithBasePath = <T extends object>(apis: T): T => {
   return transform(apis, (result, value, key) => {
@@ -22,20 +23,16 @@ export const API_ENDPOINTS = mapWithBasePath({
   oauth: '/api/auth',
 
   // agent markets
-  market: '/api/market',
-  marketItem: (identifier: string) => withBasePath(`/api/market/${identifier}`),
+  market: VITE_API_URL + '/api/market',
+  marketItem: (identifier: string) => withBasePath(VITE_API_URL + `/api/market/${identifier}`),
 
   // plugins
   gateway: '/api/plugin/gateway',
-  pluginStore: '/api/plugin/store',
+  pluginStore: VITE_API_URL +'/api/plugin/store',
 
   // chat
   chat: (provider: string) => {
-    if(provider === ModelProvider.OpenAI) {
-      
-      return 'https://api.token-ai.cn/v1/chat/completions';
-    }
-    return withBasePath(`/api/chat/${provider}`)
+    return VITE_API_URL+`/api/chat/${provider}`
   },
   chatModels: (provider: string) => withBasePath(`/api/chat/models/${provider}`),
 

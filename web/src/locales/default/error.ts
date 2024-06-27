@@ -91,7 +91,7 @@ export default {
     OllamaServiceUnavailable:
       'Ollama 服务连接失败，请检查 Ollama 是否运行正常，或是否正确设置 Ollama 的跨域配置',
 
-    AgentRuntimeError: 'Lobe AI Runtime 执行出错，请根据以下信息排查或重试',
+    AgentRuntimeError: 'Token AI Runtime 执行出错，请根据以下信息排查或重试',
     /* eslint-enable */
   },
   stt: {

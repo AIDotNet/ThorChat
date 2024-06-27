@@ -1,0 +1,961 @@
+{
+  "schemaVersion": 1,
+  "plugins": [
+    {
+      "author": "say-apps",
+      "createdAt": "2024-06-02",
+      "homepage": "https://twitter.say-apps.com",
+      "identifier": "socialsearch",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/social-search/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/social-search/logo.webp",
+        "description": "社交搜索提供访问推文、用户、关注者、图片、媒体等功能。",
+        "tags": [
+          "社交",
+          "推特",
+          "x",
+          "搜索"
+        ],
+        "title": "社交搜索"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "automateyournetwork",
+      "createdAt": "2024-05-12",
+      "homepage": "https://space.automateyournetwork.ca",
+      "identifier": "Space",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/space/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/space/logo.webp",
+        "description": "包括 NASA 的空间数据。",
+        "tags": [
+          "空间",
+          "nasa"
+        ],
+        "title": "空间"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "fatwang2",
+      "createdAt": "2024-05-06",
+      "homepage": "https://github.com/fatwang2/search1api-lobechat",
+      "identifier": "search1api",
+      "manifest": "https://lobehub.search1api.com/manifest.json",
+      "meta": {
+        "avatar": "https://i.postimg.cc/fRtTXTvC/favicon.webp",
+        "tags": [
+          "web",
+          "search"
+        ],
+        "title": "Search1API",
+        "description": "搜索聚合服务，专为LLMs设计"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "Barry",
+      "createdAt": "2024-04-30",
+      "homepage": "https://github.com/GithuBarry/chat-plugin-search-engine",
+      "identifier": "search-engine-serper",
+      "manifest": "https://raw.githubusercontent.com/GithuBarry/chat-plugin-search-engine/main/public/manifest.json",
+      "meta": {
+        "avatar": "https://serper.dev/favicon.ico",
+        "description": "通过 Serper.dev 免费 API 进行 Google 搜索引擎（每月 2500 次🆓）",
+        "tags": [
+          "网络",
+          "搜索"
+        ],
+        "title": "通过 Serper 搜索 Google"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "swap",
+      "createdAt": "2024-04-03",
+      "homepage": "https://app.swap.net",
+      "identifier": "nftguru",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/nftguru/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/nftguru/logo.webp",
+        "description": "发现主要平台上NFT的当前价格，并通过实时跟踪快速变化的市场了解情况",
+        "tags": [
+          "加密货币",
+          "NFT"
+        ],
+        "title": "NFT Guru"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "cc",
+      "createdAt": "2024-03-13",
+      "homepage": "https://www.ccalendar.space",
+      "identifier": "calendar-assistant",
+      "manifest": "https://www.ccalendar.space/manifest-calendar.json",
+      "meta": {
+        "avatar": "📅",
+        "tags": [
+          "日历",
+          "日程安排",
+          "将自动生成工作流程中的 i18n"
+        ],
+        "title": "日历助手",
+        "description": "一个用于管理日历事件的插件 # 将自动生成工作流程中的 i18n"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "feednews",
+      "createdAt": "2024-01-27",
+      "homepage": "https://cryptoplugin.feednews.com",
+      "identifier": "TokenInsights",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/token-insights/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/token-insights/logo.webp",
+        "description": "获取实时加密货币价格，BTC，ETH，BNB和最新见解。最新的币新闻和空投机会。",
+        "tags": [
+          "加密货币",
+          "btc",
+          "eth",
+          "bnb"
+        ],
+        "title": "TokenInsights"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "LobeHub",
+      "createdAt": "2024-01-27",
+      "homepage": "https://github.com/lobehub/chat-plugin-bilibili",
+      "identifier": "bilibili",
+      "manifest": "https://bilibili.chat-plugin.lobehub.com/manifest.json",
+      "meta": {
+        "avatar": "https://bilibili.chat-plugin.lobehub.com/logo.webp",
+        "tags": [
+          "视频",
+          "哔哩哔哩",
+          "搜索"
+        ],
+        "title": "哔哩哔哩",
+        "description": "通过关键词视频搜索、回放访问、互动弹幕、热门视频推荐和热搜洞察等功能，深入体验哔哩哔哩丰富的内容，尽在您的指尖。"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "LobeHub",
+      "createdAt": "2024-01-27",
+      "homepage": "https://github.com/lobehub/chat-plugin-steam",
+      "identifier": "steam",
+      "manifest": "https://steam.chat-plugin.lobehub.com/manifest.json",
+      "meta": {
+        "avatar": "https://steam.chat-plugin.lobehub.com/logo.webp",
+        "tags": [
+          "steam",
+          "game"
+        ],
+        "title": "Steam",
+        "description": "从Steam获取游戏信息和用户评论。"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "cc",
+      "createdAt": "2024-01-26",
+      "homepage": "https://github.com/ccdanpian/current-datetime",
+      "identifier": "current-datetime-assistant",
+      "manifest": "https://www.ccalendar.space/manifest-currentTime.json",
+      "meta": {
+        "avatar": "⏰",
+        "tags": [
+          "时间"
+        ],
+        "title": "当前时间助手",
+        "description": "提供当前时间信息的插件"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "azurewebsites",
+      "createdAt": "2024-01-25",
+      "homepage": "https://aladin-search-book.azurewebsites.net",
+      "identifier": "AladinSearchBooks",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/aladin-search-book/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/aladin-search-book/logo.webp",
+        "description": "在阿拉丁上搜索书籍。",
+        "tags": [
+          "书籍",
+          "搜索"
+        ],
+        "title": "AladinBooks"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "prod",
+      "createdAt": "2024-01-25",
+      "homepage": "https://api.prod.bardeen.ai",
+      "identifier": "Bardeen",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/bardeen/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/bardeen/logo.webp",
+        "description": "在最流行的网络服务上创建和运行自动化。",
+        "tags": [
+          "工作流程",
+          "自动化"
+        ],
+        "title": "Bardeen"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "medium",
+      "createdAt": "2024-01-25",
+      "homepage": "https://medium.com",
+      "identifier": "MediumGPTPlugin",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/medium/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/medium/logo.webp",
+        "description": "用于访问、浏览和提取 Medium 内容的插件。",
+        "tags": [
+          "文章",
+          "搜索"
+        ],
+        "title": "Medium plugin"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "mixerbox",
+      "createdAt": "2024-01-25",
+      "homepage": "https://podcasts.mixerbox.com",
+      "identifier": "MixerBox_Podcasts",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/mixer-box-podcasts/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/mixer-box-podcasts/logo.webp",
+        "description": "轻松搜索播客！探索涵盖社会、体育、商业、新闻、音乐等内容的播客！",
+        "tags": [
+          "播客",
+          "搜索"
+        ],
+        "title": "MixerBox Podcasts"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "mixerbox",
+      "createdAt": "2024-01-25",
+      "homepage": "https://translate.mixerbox.com",
+      "identifier": "MixerBox_Translate_AI_language_tutor",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/mixer-box-translate-ai-language-tutor/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/mixer-box-translate-ai-language-tutor/logo.webp",
+        "description": "立即翻译任何语言！通过与 AI 导师对话轻松学习外语！",
+        "tags": [
+          "翻译"
+        ],
+        "title": "MixerBox 翻译"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "mixerbox",
+      "createdAt": "2024-01-25",
+      "homepage": "https://weather.mixerbox.com",
+      "identifier": "MixerBox_Weather",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/mixer-box-weather/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/mixer-box-weather/logo.webp",
+        "description": "立即获取实时全球天气更新和预报！",
+        "tags": [
+          "weather"
+        ],
+        "title": "MixerBox Weather"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "shoppingtools",
+      "createdAt": "2024-01-25",
+      "homepage": "https://shoppingtools.biz",
+      "identifier": "ShoppingTools",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/shopping-tools/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/shopping-tools/logo.webp",
+        "description": "在 eBay 和 AliExpress 上搜索产品，查找 eBay 活动和优惠券。获取快速示例。",
+        "tags": [
+          "购物",
+          "eBay",
+          "AliExpress",
+          "优惠券"
+        ],
+        "title": "购物工具"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "portfoliometa",
+      "createdAt": "2024-01-25",
+      "homepage": "https://portfoliometa.com",
+      "identifier": "StockData",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/stock-data/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/stock-data/logo.webp",
+        "description": "分析股票并获取全面的实时投资数据和分析。",
+        "tags": [
+          "股票"
+        ],
+        "title": "PortfolioMeta"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "accessplugins",
+      "createdAt": "2024-01-25",
+      "homepage": "https://sheets.accessplugins.com",
+      "identifier": "access_google_sheets",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/access-google-sheets/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/access-google-sheets/logo.webp",
+        "description": "提出您的 Google 表格问题并与 Excel 进行交流。输入 Google 云端硬盘链接开始！",
+        "tags": [
+          "google",
+          "sheets",
+          "excel"
+        ],
+        "title": "访问 Google 表格"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "magejosh",
+      "createdAt": "2024-01-25",
+      "homepage": "https://dmtoolkit.magejosh.repl.co",
+      "identifier": "diceroller",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/diceroller/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/diceroller/logo.webp",
+        "description": "使用d20或Fate/Fudge系统掷骰子的应用程序。",
+        "tags": [
+          "游戏",
+          "骰子",
+          "DM"
+        ],
+        "title": "DM 工具包"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "customplugin",
+      "createdAt": "2024-01-25",
+      "homepage": "https://levinbot.customplugin.ai",
+      "identifier": "levinbot",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/levinbot/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/levinbot/logo.webp",
+        "description": "搜索Michael Levin博士实验室的研究论文和讲话文本。",
+        "tags": [
+          "研究论文",
+          "搜索"
+        ],
+        "title": "LevinBot"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "webfx",
+      "createdAt": "2024-01-25",
+      "homepage": "https://webfx.ai",
+      "identifier": "seo_assistant",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/seo-assistant/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/seo-assistant/logo.webp",
+        "description": "SEO助手可以生成搜索引擎关键词信息，以帮助创建内容。",
+        "tags": [
+          "seo",
+          "关键词"
+        ],
+        "title": "SEO助手"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "azurewebsites",
+      "createdAt": "2024-01-25",
+      "homepage": "https://gptfineart.azurewebsites.net",
+      "identifier": "ssfineart",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/ssfineart/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/ssfineart/logo.webp",
+        "description": "一个研究助理，返回用户请求的一组艺术品示例的URI集合。",
+        "tags": [
+          "艺术",
+          "美术",
+          "搜索"
+        ],
+        "title": "SuperStock Fine Art"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "pluginboost",
+      "createdAt": "2024-01-25",
+      "homepage": "https://guitarchords.pluginboost.com",
+      "identifier": "uberchord",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/uberchord/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/uberchord/logo.webp",
+        "description": "通过指定和弦名称查找吉他和弦图。",
+        "tags": [
+          "音乐",
+          "吉他",
+          "搜索"
+        ],
+        "title": "Uberchord"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "pulsetic",
+      "createdAt": "2024-01-25",
+      "homepage": "https://api.pulsetic.com",
+      "identifier": "uptime",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/uptime/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/uptime/logo.webp",
+        "description": "插入您的网站 URL 以检查可用性。Pulsetic 测试网站的正常运行时间、可用性和性能。",
+        "tags": [
+          "网站",
+          "性能",
+          "测试"
+        ],
+        "title": "检查网站是否宕机"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "tapapis",
+      "createdAt": "2024-01-23",
+      "homepage": "https://openai.tapapis.com",
+      "identifier": "GameSight",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/game-sight/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/game-sight/logo.webp",
+        "description": "发现游戏、与游戏相关的内容、获取推荐，并根据玩家评价比较游戏。",
+        "tags": [
+          "游戏",
+          "搜索"
+        ],
+        "title": "GameSight"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "txyz",
+      "createdAt": "2024-01-23",
+      "homepage": "https://txyz.ai",
+      "identifier": "ResearchAI",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/txyz/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/txyz/logo.webp",
+        "description": "探索研究的宇宙。搜索和比较论文，并回答问题。",
+        "tags": [
+          "research-paper",
+          "search"
+        ],
+        "title": "txyz.ai"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "orrenprunckun",
+      "createdAt": "2024-01-23",
+      "homepage": "https://seo-plugin.orrenprunckun.com",
+      "identifier": "SEO",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/seo/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/seo/logo.webp",
+        "description": "输入任何URL和关键词，获取页面SEO分析和见解！",
+        "tags": [
+          "seo"
+        ],
+        "title": "SEO"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "maila",
+      "createdAt": "2024-01-23",
+      "homepage": "https://vcaption.maila.ai",
+      "identifier": "VideoCaptions",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/video-captions/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/video-captions/logo.webp",
+        "description": "将Youtube链接转换为转录文本，使其能够提问，创建章节，并总结其内容。",
+        "tags": [
+          "视频转文字",
+          "YouTube"
+        ],
+        "title": "视频字幕"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "glarity",
+      "createdAt": "2024-01-23",
+      "homepage": "https://glarity.app",
+      "identifier": "Video_summary",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/video-summary/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/video-summary/logo.webp",
+        "description": "总结YouTube视频亮点。从YouTube视频链接生成摘要。",
+        "tags": [
+          "视频转文字",
+          "YouTube"
+        ],
+        "title": "视频摘要"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "domatron",
+      "createdAt": "2024-01-23",
+      "homepage": "https://gpt.domatron.com",
+      "identifier": "domatron",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/domatron/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/domatron/logo.webp",
+        "description": "为您的企业找到可用的、可品牌化的.com域名。",
+        "tags": [
+          "域名",
+          "搜索"
+        ],
+        "title": "Domatron Domains"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "litmaps",
+      "createdAt": "2024-01-23",
+      "homepage": "https://api.litmaps.com",
+      "identifier": "litmaps",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/litmaps/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/litmaps/logo.webp",
+        "description": "获取帮助，探索科学文献。找到相关论文并生成文献思维导图。",
+        "tags": [
+          "科学文献",
+          "搜索"
+        ],
+        "title": "Litmaps"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "questmate",
+      "createdAt": "2024-01-23",
+      "homepage": "https://chatgpt-plugin.questmate.com",
+      "identifier": "questmate",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/questmate/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/questmate/logo.webp",
+        "description": "创建表单、清单和工作流程（我们称之为任务！），您可以分配、安排或公开。",
+        "tags": [
+          "表单",
+          "清单",
+          "生产力"
+        ],
+        "title": "Questmate Forms"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "guruwalk",
+      "createdAt": "2024-01-23",
+      "homepage": "https://www.guruwalk.com",
+      "identifier": "todo",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/guru-walk/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/guru-walk/logo.webp",
+        "description": "世界上最好的免费导游就在这里。",
+        "tags": [
+          "旅行",
+          "导游"
+        ],
+        "title": "GuruWalk"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "travelmyth",
+      "createdAt": "2024-01-23",
+      "homepage": "https://www.travelmyth.com",
+      "identifier": "travelmyth",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/travelmyth/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/travelmyth/logo.webp",
+        "description": "通过Travelmyth释放个性化酒店搜索，提供60个独特类别，找到完美匹配。",
+        "tags": [
+          "旅行",
+          "酒店",
+          "搜索"
+        ],
+        "title": "Travelmyth"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "onrender",
+      "createdAt": "2024-01-22",
+      "homepage": "https://llamawrapper-prod.onrender.com",
+      "identifier": "defillama",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/defillama/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/defillama/logo.webp",
+        "description": "检索 DeFi 协议和区块链的数据。",
+        "tags": [
+          "加密货币",
+          "去中心化金融"
+        ],
+        "title": "Defillama"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "mintbase",
+      "createdAt": "2024-01-22",
+      "homepage": "https://search-ai.mintbase.xyz",
+      "identifier": "mintbasesearch",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/mintbasesearch/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/mintbasesearch/logo.webp",
+        "description": "在 NEAR 协议上查找任何 NFT 数据。",
+        "tags": [
+          "加密货币",
+          "NFT"
+        ],
+        "title": "MintbaseSearch"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "getchange",
+      "createdAt": "2024-01-22",
+      "homepage": "https://api.getchange.io",
+      "identifier": "nonprofits",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/getchange/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/getchange/logo.webp",
+        "description": "发现在您的社区和更广泛范围内支持的有影响力的非营利组织。",
+        "tags": [
+          "慈善"
+        ],
+        "title": "Change"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "savvytrader",
+      "createdAt": "2024-01-20",
+      "homepage": "https://savvytrader.com",
+      "identifier": "savvy_trader_ai",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/savvy-trader/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/savvy-trader/logo.webp",
+        "description": "实时股票、加密货币和其他投资数据。",
+        "tags": [
+          "股票",
+          "分析"
+        ],
+        "title": "Savvy Trader AI"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "LobeHub",
+      "createdAt": "2024-01-18",
+      "homepage": "https://github.com/lobehub/chat-plugin-midjourney",
+      "identifier": "midjourney",
+      "manifest": "https://midjourney.chat-plugin.lobehub.com/manifest.json",
+      "meta": {
+        "avatar": "https://cdn.discordapp.com/icons/662267976984297473/39128f6c9fc33f4c95a27d4c601ad7db.webp",
+        "title": "Midjourney",
+        "description": "通过简单的提示轻松释放创造力，利用Midjourney生成独特的AI驱动图像。通过Midjourney的艺术触感为您的对话增添视觉魅力。",
+        "tags": [
+          "ai-image-generation",
+          "midjourney",
+          "visualization"
+        ]
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "efficiency",
+      "createdAt": "2024-01-17",
+      "homepage": "https://chat-plugin-giphy.efficiency.tools",
+      "identifier": "GifApi",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/gif-search/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/gif-search/logo.webp",
+        "description": "搜索各种各样的 GIF - 由 Giphy 提供动力。",
+        "tags": [
+          "gif",
+          "图片",
+          "搜索"
+        ],
+        "title": "GIF 搜索"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "assetovi",
+      "createdAt": "2024-01-17",
+      "homepage": "https://assetovi.com",
+      "identifier": "assetOvi",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/asset-ovi/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/asset-ovi/logo.webp",
+        "description": "搜索和预览数百万款用于游戏、AIGC、AR/VR等领域的3D资产。",
+        "tags": [
+          "3-d",
+          "资产",
+          "搜索"
+        ],
+        "title": "Asset Ovi"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "360macky",
+      "createdAt": "2024-01-17",
+      "homepage": "https://api.360macky.com",
+      "identifier": "astrodaily",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/astrodaily/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/astrodaily/logo.webp",
+        "description": "搜索和发现NASA图像。",
+        "tags": [
+          "nasa",
+          "搜索",
+          "图像"
+        ],
+        "title": "Astrodaily"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "boolio",
+      "createdAt": "2024-01-17",
+      "homepage": "https://chatgpt.boolio.co.kr",
+      "identifier": "boolio",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/boolio/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/boolio/logo.webp",
+        "description": "使用Boolio的先进引擎分析来自任何国家的股票投资。",
+        "tags": [
+          "股票",
+          "分析"
+        ],
+        "title": "Boolio Invest"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "yunwei37",
+      "createdAt": "2024-01-17",
+      "homepage": "https://github.com/yunwei37/ChatGPT-github-stat-plugin",
+      "identifier": "gitUserRepoStats",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/github-stats/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/github-stats/logo.webp",
+        "description": "动态生成和分析开源软件仓库和开发者的统计数据和历史记录。",
+        "tags": [
+          "github",
+          "oss"
+        ],
+        "title": "Git OSS Stats"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "brandzzy",
+      "createdAt": "2024-01-17",
+      "homepage": "https://sheet-generator.brandzzy.com",
+      "identifier": "make_an_excel_sheet",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/make-a-sheet/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/make-a-sheet/logo.webp",
+        "description": "生成一个可以直接导入到Google表格或MS Excel的csv文件。",
+        "tags": [
+          "csv",
+          "excel",
+          "sheet"
+        ],
+        "title": "创建表格"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "plugsugar",
+      "createdAt": "2024-01-17",
+      "homepage": "https://websearch.plugsugar.com",
+      "identifier": "web_search",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/web-search/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/web-search/logo.webp",
+        "description": "从互联网搜索信息。",
+        "tags": [
+          "搜索",
+          "plugsugar"
+        ],
+        "title": "网络搜索"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "Arvin Xu",
+      "createdAt": "2024-01-14",
+      "homepage": "https://github.com/arvinxx/lobe-plugin-tikzjax",
+      "identifier": "TikZJax",
+      "manifest": "https://lobe-plugin-tikzjax.arvinx.com/manifest.json",
+      "meta": {
+        "avatar": "📐",
+        "tags": [
+          "latex",
+          "svg",
+          "可视化",
+          "图表",
+          "数学"
+        ],
+        "title": "TikZJax",
+        "description": "将 LaTeX TikZ 代码转换为 SVG 图像，用于创建清晰、可缩放的数学图表和可视化效果。"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "Moonlit7",
+      "createdAt": "2023-12-19",
+      "homepage": "https://github.com/Moonlit7/chat-plugin-mindmap",
+      "identifier": "moonlit-mind-map",
+      "manifest": "https://mindmap.flowai.one/manifest.json",
+      "meta": {
+        "avatar": "🧠",
+        "tags": [
+          "思维导图",
+          "脑图"
+        ],
+        "title": "思维导图",
+        "description": "思维导图生成助手"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "steven-tey",
+      "createdAt": "2023-12-16",
+      "homepage": "https://github.com/steven-tey/weathergpt",
+      "identifier": "WeatherGPT",
+      "manifest": "https://openai-collections.chat-plugin.lobehub.com/weather-gpt/manifest.json",
+      "meta": {
+        "avatar": "https://openai-collections.chat-plugin.lobehub.com/weather-gpt/logo.webp",
+        "description": "获取特定位置的当前天气信息。",
+        "tags": [
+          "天气"
+        ],
+        "title": "天气 GPT"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "AI0x0",
+      "createdAt": "2023-12-10",
+      "homepage": "https://github.com/mushan0x0/lobe-pollinations-ai",
+      "identifier": "pollinations-drawing",
+      "manifest": "https://pollinations.ai-chat.top/manifest.json",
+      "meta": {
+        "avatar": "🎨",
+        "tags": [
+          "drawing",
+          "image"
+        ],
+        "title": "授粉绘画",
+        "description": "通过 pollinations.ai 进行图像生成"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "LobeHub",
+      "createdAt": "2023-11-01",
+      "homepage": "https://github.com/lobehub/chat-plugin-clock-time",
+      "identifier": "clock-time",
+      "manifest": "https://clock-time.chat-plugin.lobehub.com/manifest.json",
+      "meta": {
+        "avatar": "🕐",
+        "tags": [
+          "时钟",
+          "时间"
+        ],
+        "title": "时钟时间",
+        "description": "显示一个时钟来展示当前时间"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "LobeHub",
+      "createdAt": "2023-08-17",
+      "homepage": "https://github.com/lobehub/chat-plugin-web-crawler",
+      "identifier": "website-crawler",
+      "manifest": "https://web-crawler.chat-plugin.lobehub.com/manifest.json",
+      "meta": {
+        "avatar": "🕸",
+        "tags": [
+          "网页",
+          "内容爬取器"
+        ],
+        "title": "网站爬虫",
+        "description": "从网页链接中提取内容"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "LobeHub",
+      "createdAt": "2023-08-15",
+      "homepage": "https://github.com/lobehub/chat-plugin-search-engine",
+      "identifier": "search-engine",
+      "manifest": "https://search-engine.chat-plugin.lobehub.com/manifest.json",
+      "meta": {
+        "avatar": "🔍",
+        "tags": [
+          "网络",
+          "搜索"
+        ],
+        "title": "搜索引擎",
+        "description": "查询搜索引擎以获取信息"
+      },
+      "schemaVersion": 1
+    },
+    {
+      "author": "LobeHub",
+      "createdAt": "2023-08-12",
+      "homepage": "https://github.com/lobehub/chat-plugin-realtime-weather",
+      "identifier": "realtime-weather",
+      "manifest": "https://realtime-weather.chat-plugin.lobehub.com/manifest.json",
+      "meta": {
+        "avatar": "🌈",
+        "tags": [
+          "天气",
+          "实时"
+        ],
+        "title": "实时天气",
+        "description": "获取实时天气信息"
+      },
+      "schemaVersion": 1
+    }
+  ],
+  "tags": [
+    "搜索",
+    "加密货币",
+    "股票"
+  ]
+}
