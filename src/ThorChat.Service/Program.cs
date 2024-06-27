@@ -28,6 +28,23 @@ builder.Services.AddTransient<MarketService>()
 
 var app = builder.Build();
 
+// 重定向到 index.html
+app.Use(async (context, next) =>
+{
+    if (context.Request.Path == "/")
+    {
+        context.Request.Path = "/index.html";
+    }
+
+    await next();
+
+    if (context.Response.StatusCode == 404)
+    {
+        context.Request.Path = "/index.html";
+        await next();
+    }
+});
+
 app.UseCors("AllowAll");
 
 app.UseResponseCompression();

@@ -26,14 +26,6 @@ const MeDataLayout = lazy(() => import('@/app/(main)/(mobile)/me/data/layout'));
 const MeDataPage = lazy(() => import('@/app/(main)/(mobile)/me/data/page'));
 const MainLayout = lazy(() => import("./app/(main)/layout"));
 
-const originalConsoleError = console.error;
-console.error = (...args) => {
-  if (args[0].includes('A component suspended while responding to synchronous input')) {
-    return;
-  }
-  // originalConsoleError(...args);
-};
-
 const router = createBrowserRouter([
   {
     element: <RootLayout></RootLayout>,

@@ -1,0 +1,6 @@
+﻿services:
+  thor-chat:
+    image: registry.token-ai.cn/thor-chat
+    build:
+      context: .
+      dockerfile: src/ThorChat.Service/Dockerfile
