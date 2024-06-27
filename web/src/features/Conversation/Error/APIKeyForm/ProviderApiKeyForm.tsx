@@ -56,7 +56,7 @@ const ProviderApiKeyForm = memo<ProviderApiKeyFormProps>(
               onChange={(e) => {
                 setConfig(provider, { baseURL: e.target.value });
               }}
-              placeholder={'http://api.token-ai.cn/v1'}
+              placeholder={'http://api.token-ai.cn/'}
               type={'block'}
               value={proxyUrl}
             />

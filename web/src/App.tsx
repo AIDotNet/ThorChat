@@ -1,28 +1,30 @@
-import { Route, RouterProvider, createBrowserRouter } from "react-router-dom"
+import { RouterProvider, createBrowserRouter } from "react-router-dom"
+import { Suspense, lazy } from "react"
 import './App.css'
-import { ThemeProvider } from "@lobehub/ui"
-import RootLayout from "./app/layout"
-import WelcomeLayout from "./app/(main)/welcome/layout"
-import WelcomePage from "./app/(main)/welcome/page"
-import MainLayout from "./app/(main)/layout"
-import ChatLayout from "./app/(main)/chat/layout"
-import SettingLayout from './app/(main)/settings/layout'
-import SettingModla from './app/(main)/settings/modal/page'
-import Category from "./app/(main)/settings/@category/default"
-import SettingCommon from "./app/(main)/settings/common/page"
-import SettingSystemAgent from "./app/(main)/settings/system-agent/page"
-import SettingSync from "./app/(main)/settings/sync/page"
-import SettingLLM from "./app/(main)/settings/llm/page"
-import SettingTTS from "./app/(main)/settings/tts/page"
-import SettingAgent from "./app/(main)/settings/agent/page"
-import SettingAbout from "./app/(main)/settings/about/page"
-import MarketLayout from './app/(main)/market/layout'
-import MarketPage from './app/(main)/market/page'
-import Auth from './app/auth/page'
-import MeLayout from '@/app/(main)/(mobile)/me/(home)/layout'
-import MePage from '@/app/(main)/(mobile)/me/(home)/page'
-import MeDataPage from '@/app/(main)/(mobile)/me/data/page'
-import MeDataLayout from '@/app/(main)/(mobile)/me/data/layout'
+
+import Loading from "./app/(main)/(loading)/Client"
+const RootLayout = lazy(() => import("./app/layout"));
+const WelcomeLayout = lazy(() => import("./app/(main)/welcome/layout"));
+const WelcomePage = lazy(() => import("./app/(main)/welcome/page"));
+const ChatLayout = lazy(() => import("./app/(main)/chat/layout"));
+const SettingLayout = lazy(() => import('./app/(main)/settings/layout'));
+const SettingModal = lazy(() => import('./app/(main)/settings/modal/page'));
+const Category = lazy(() => import("./app/(main)/settings/@category/default"));
+const SettingCommon = lazy(() => import("./app/(main)/settings/common/page"));
+const SettingSystemAgent = lazy(() => import("./app/(main)/settings/system-agent/page"));
+const SettingSync = lazy(() => import("./app/(main)/settings/sync/page"));
+const SettingLLM = lazy(() => import("./app/(main)/settings/llm/page"));
+const SettingTTS = lazy(() => import("./app/(main)/settings/tts/page"));
+const SettingAgent = lazy(() => import("./app/(main)/settings/agent/page"));
+const SettingAbout = lazy(() => import("./app/(main)/settings/about/page"));
+const MarketLayout = lazy(() => import('./app/(main)/market/layout'));
+const MarketPage = lazy(() => import('./app/(main)/market/page'));
+const Auth = lazy(() => import('./app/auth/page'));
+const MeLayout = lazy(() => import('@/app/(main)/(mobile)/me/(home)/layout'));
+const MePage = lazy(() => import('@/app/(main)/(mobile)/me/(home)/page'));
+const MeDataLayout = lazy(() => import('@/app/(main)/(mobile)/me/data/layout'));
+const MeDataPage = lazy(() => import('@/app/(main)/(mobile)/me/data/page'));
+const MainLayout = lazy(() => import("./app/(main)/layout"));
 
 const originalConsoleError = console.error;
 console.error = (...args) => {
@@ -38,106 +40,120 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/me',
-        element: <MainLayout>
+        element: <Suspense fallback={<Loading />}><MainLayout>
           <MeLayout>
             <MePage />
           </MeLayout>
         </MainLayout>
+        </Suspense>
       },
       {
         path: '/me/data',
-        element: <MainLayout>
-          <MeDataLayout>
-            <MeDataPage />
-          </MeDataLayout>
-        </MainLayout>
+        element:
+          <Suspense fallback={<Loading />}><MainLayout>
+            <MeDataLayout>
+              <MeDataPage />
+            </MeDataLayout>
+          </MainLayout>
+          </Suspense>
       },
       {
         path: '',
-        element: <MainLayout>
+        element: <Suspense fallback={<Loading />}><MainLayout>
           <WelcomeLayout>
             <WelcomePage />
           </WelcomeLayout>
         </MainLayout>
+        </Suspense>
       },
       {
         path: 'market',
-        element: <MainLayout>
+        element: <Suspense fallback={<Loading />}><MainLayout>
           <MarketLayout>
             <MarketPage></MarketPage>
           </MarketLayout>
         </MainLayout>
+        </Suspense>
       },
       {
         path: 'chat',
-        element: <MainLayout>
+        element: <Suspense fallback={<Loading />}><MainLayout>
           <ChatLayout>
           </ChatLayout>
         </MainLayout>
+        </Suspense>
       },
       {
         path: '/settings/modal',
-        element: <MainLayout>
+        element: <Suspense fallback={<Loading />}><MainLayout>
           <SettingLayout category={<Category></Category>}>
-            <SettingModla />
+            <SettingModal />
           </SettingLayout>
         </MainLayout>
+        </Suspense>
       },
       {
         path: '/settings/common',
-        element: <MainLayout>
+        element: <Suspense fallback={<Loading />}><MainLayout>
           <SettingLayout category={<Category></Category>}>
             <SettingCommon />
           </SettingLayout>
         </MainLayout>
+        </Suspense>
       },
       {
         path: '/settings/system-agent',
-        element: <MainLayout>
+        element: <Suspense fallback={<Loading />}><MainLayout>
           <SettingLayout category={<Category></Category>}>
             <SettingSystemAgent />
           </SettingLayout>
         </MainLayout>
+        </Suspense>
       },
       {
         path: '/settings/sync',
-        element: <MainLayout>
+        element: <Suspense fallback={<Loading />}><MainLayout>
           <SettingLayout category={<Category></Category>}>
             <SettingSync />
           </SettingLayout>
         </MainLayout>
+        </Suspense>
       },
       {
         path: '/settings/llm',
-        element: <MainLayout>
+        element: <Suspense fallback={<Loading />}><MainLayout>
           <SettingLayout category={<Category></Category>}>
             <SettingLLM />
           </SettingLayout>
         </MainLayout>
+        </Suspense>
       },
       {
         path: '/settings/tts',
-        element: <MainLayout>
-          <SettingLayout category={<Category></Category>}>
-            <SettingTTS />
-          </SettingLayout>
-        </MainLayout>
+        element: <Suspense fallback={<Loading />}><MainLayout>
+        <SettingLayout category={<Category></Category>}>
+          <SettingTTS />
+        </SettingLayout>
+      </MainLayout>
+        </Suspense>
       },
       {
         path: '/settings/agent',
-        element: <MainLayout>
-          <SettingLayout category={<Category></Category>}>
-            <SettingAgent />
-          </SettingLayout>
-        </MainLayout>
+        element: <Suspense fallback={<Loading />}><MainLayout>
+        <SettingLayout category={<Category></Category>}>
+          <SettingAgent />
+        </SettingLayout>
+      </MainLayout>
+        </Suspense>
       },
       {
         path: '/settings/about',
-        element: <MainLayout>
-          <SettingLayout category={<Category></Category>}>
-            <SettingAbout />
-          </SettingLayout>
-        </MainLayout>
+        element: <Suspense fallback={<Loading />}><MainLayout>
+        <SettingLayout category={<Category></Category>}>
+          <SettingAbout />
+        </SettingLayout>
+      </MainLayout>
+        </Suspense>
       }
     ]
   },

@@ -12,7 +12,7 @@ export const useOpenAIProvider = (): ProviderItem => {
   return {
     ...OpenAIProviderCard,
     proxyUrl: showOpenAIProxyUrl && {
-      placeholder: 'http://api.token-ai.cn/v1',
+      placeholder: 'http://api.token-ai.cn/',
     },
     showApiKey: showOpenAIApiKey,
     title: <OpenAI.Combine size={24} />,

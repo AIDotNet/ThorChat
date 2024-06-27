@@ -3,5 +3,6 @@ export const useQuery = () => {
   const [searchParams] = useSearchParams();
   return {
     showMobileWorkspace : searchParams.get('session'),
+    tab : searchParams.get('tab'),
   };
 };
