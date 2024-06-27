@@ -30,7 +30,7 @@ const BrandWatermark = memo<Omit<FlexboxProps, 'children'>>(({ style, ...rest })
     >
       <span>Powered by</span>
       <Link className={styles.logoLink} to={'https://token-ai.cn'} target={'_blank'}>
-        <LobeHub size={20} type={'text'} />
+        TokenAI
       </Link>
     </Flexbox>
   );

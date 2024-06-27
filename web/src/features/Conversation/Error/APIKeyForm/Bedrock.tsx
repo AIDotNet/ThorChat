@@ -57,7 +57,7 @@ const BedrockForm = memo(() => {
             label: i,
             value: i,
           }))}
-          placeholder={'https://api.openai.com/v1'}
+          placeholder={'http://api.token-ai.cn/v1'}
           style={{ width: '100%' }}
           value={region}
         />

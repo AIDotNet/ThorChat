@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom"
+import { Route, RouterProvider, createBrowserRouter } from "react-router-dom"
 import './App.css'
 import { ThemeProvider } from "@lobehub/ui"
 import RootLayout from "./app/layout"
@@ -20,17 +20,23 @@ import MarketLayout from './app/(main)/market/layout'
 import MarketPage from './app/(main)/market/page'
 import Auth from './app/auth/page'
 
+const originalConsoleError = console.error;
+console.error = (...args) => {
+  if (args[0].includes('A component suspended while responding to synchronous input')) {
+    return;
+  }
+  // originalConsoleError(...args);
+};
 
 const router = createBrowserRouter([
   {
-    path: "",
     element: <RootLayout></RootLayout>,
     children: [
       {
         path: '',
         element: <MainLayout>
           <WelcomeLayout>
-            <WelcomePage/>
+            <WelcomePage />
           </WelcomeLayout>
         </MainLayout>
       },
@@ -123,7 +129,9 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <RouterProvider router={router} />
+    <>
+      <RouterProvider router={router} />
+    </>
   )
 }
 
