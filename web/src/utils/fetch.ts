@@ -307,7 +307,12 @@ export const fetchSSE = async (url: string, options: RequestInit & FetchSSEOptio
         triggerOnMessageHandler = true;
         let data;
         try {
-          data = JSON.parse(ev.data);
+          const value  = JSON.parse(ev.data);
+          if(value.choices[0].delta && value.choices[0].delta?.content) {
+            data = value.choices[0].delta.content;
+          }else{
+            return;
+          }
         } catch (e) {
           console.warn('parse error, fallback to stream', e);
           options.onMessageHandle?.({ text: data, type: 'text' });
