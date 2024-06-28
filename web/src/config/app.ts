@@ -20,14 +20,14 @@ export const getAppConfig = () => {
 
     AGENTS_INDEX_URL: !!process.env.AGENTS_INDEX_URL
       ? process.env.AGENTS_INDEX_URL
-      : 'https://chat-agents.lobehub.com',
+      : 'https://chat-agents.token-ai.com',
 
     DEFAULT_AGENT_CONFIG: process.env.DEFAULT_AGENT_CONFIG || '',
     SYSTEM_AGENT: process.env.SYSTEM_AGENT,
 
     PLUGINS_INDEX_URL: !!process.env.PLUGINS_INDEX_URL
       ? process.env.PLUGINS_INDEX_URL
-      : 'https://chat-plugins.lobehub.com',
+      : 'https://chat-plugins.token-ai.com',
 
     PLUGIN_SETTINGS: process.env.PLUGIN_SETTINGS,
     SITE_URL: process.env.SITE_URL,

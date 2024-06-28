@@ -3,6 +3,7 @@ import { Suspense, lazy } from "react"
 import './App.css'
 
 import Loading from "./app/(main)/(loading)/Client"
+import SettingLoading from "./app/(main)/settings/loading"
 const RootLayout = lazy(() => import("./app/layout"));
 const WelcomeLayout = lazy(() => import("./app/(main)/welcome/layout"));
 const WelcomePage = lazy(() => import("./app/(main)/welcome/page"));
@@ -77,75 +78,82 @@ const router = createBrowserRouter([
       },
       {
         path: '/settings/modal',
-        element: <Suspense fallback={<Loading />}><MainLayout>
+        element: <MainLayout>
           <SettingLayout category={<Category></Category>}>
-            <SettingModal />
+            <Suspense fallback={<SettingLoading />}>
+              <SettingModal />
+            </Suspense>
           </SettingLayout>
         </MainLayout>
-        </Suspense>
       },
       {
         path: '/settings/common',
-        element: <Suspense fallback={<Loading />}><MainLayout>
+        element: <MainLayout>
           <SettingLayout category={<Category></Category>}>
-            <SettingCommon />
+            <Suspense fallback={<SettingLoading />}>
+              <SettingCommon />
+            </Suspense>
           </SettingLayout>
         </MainLayout>
-        </Suspense>
       },
       {
         path: '/settings/system-agent',
-        element: <Suspense fallback={<Loading />}><MainLayout>
-          <SettingLayout category={<Category></Category>}>
+        element: <MainLayout>
+          <SettingLayout category={<Category></Category>}><Suspense fallback={<SettingLoading />}>
             <SettingSystemAgent />
+          </Suspense>
           </SettingLayout>
         </MainLayout>
-        </Suspense>
       },
       {
         path: '/settings/sync',
-        element: <Suspense fallback={<Loading />}><MainLayout>
+        element: <MainLayout>
           <SettingLayout category={<Category></Category>}>
-            <SettingSync />
+            <Suspense fallback={<SettingLoading />}>
+              <SettingSync />
+            </Suspense>
           </SettingLayout>
         </MainLayout>
-        </Suspense>
       },
       {
         path: '/settings/llm',
-        element: <Suspense fallback={<Loading />}><MainLayout>
+        element: <MainLayout>
           <SettingLayout category={<Category></Category>}>
-            <SettingLLM />
+            <Suspense fallback={<SettingLoading />}>
+              <SettingLLM />
+            </Suspense>
           </SettingLayout>
         </MainLayout>
-        </Suspense>
       },
       {
         path: '/settings/tts',
-        element: <Suspense fallback={<Loading />}><MainLayout>
-        <SettingLayout category={<Category></Category>}>
-          <SettingTTS />
-        </SettingLayout>
-      </MainLayout>
-        </Suspense>
+        element: <MainLayout>
+          <SettingLayout category={<Category></Category>}>
+            <Suspense fallback={<SettingLoading />}>
+              <SettingTTS />
+            </Suspense>
+          </SettingLayout>
+        </MainLayout>
       },
       {
         path: '/settings/agent',
-        element: <Suspense fallback={<Loading />}><MainLayout>
-        <SettingLayout category={<Category></Category>}>
-          <SettingAgent />
-        </SettingLayout>
-      </MainLayout>
-        </Suspense>
+        element: <MainLayout>
+          <SettingLayout category={<Category></Category>}>
+            <Suspense fallback={<SettingLoading />}>
+              <SettingAgent />
+            </Suspense>
+          </SettingLayout>
+        </MainLayout>
       },
       {
         path: '/settings/about',
-        element: <Suspense fallback={<Loading />}><MainLayout>
-        <SettingLayout category={<Category></Category>}>
-          <SettingAbout />
-        </SettingLayout>
-      </MainLayout>
-        </Suspense>
+        element: <MainLayout>
+          <SettingLayout category={<Category></Category>}>
+            <Suspense fallback={<SettingLoading />}>
+              <SettingAbout />
+            </Suspense>
+          </SettingLayout>
+        </MainLayout>
       }
     ]
   },

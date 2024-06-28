@@ -8,7 +8,7 @@ export const LobeOpenRouterAI = LobeOpenAICompatibleFactory({
   baseURL: 'https://openrouter.ai/api/v1',
   constructorOptions: {
     defaultHeaders: {
-      'HTTP-Referer': 'https://chat-preview.lobehub.com',
+      'HTTP-Referer': 'https://chat-preview.token-ai.com',
       'X-Title': 'Token Chat',
     },
   },

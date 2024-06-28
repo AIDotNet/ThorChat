@@ -9,7 +9,7 @@ export const LobeTogetherAI = LobeOpenAICompatibleFactory({
   baseURL: `${baseURL}/v1`,
   constructorOptions: {
     defaultHeaders: {
-      'HTTP-Referer': 'https://chat-preview.lobehub.com',
+      'HTTP-Referer': 'https://chat-preview.token-ai.com',
       'X-Title': 'Token Chat',
     },
   },

@@ -61,7 +61,7 @@ const LocalForm = memo<{ form: FormInstance; mode?: 'edit' | 'create' }>(({ form
       name: ['manifest', 'author'],
     },
     {
-      children: <Input placeholder={'https://www.lobehub.com'} />,
+      children: <Input placeholder={'https://www.token-ai.com'} />,
       desc: t('dev.meta.homepage.desc'),
       label: t('dev.meta.homepage.label'),
       name: ['manifest', 'homepage'],

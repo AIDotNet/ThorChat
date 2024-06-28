@@ -1,7 +1,7 @@
 
 
 import isEqual from 'fast-deep-equal';
-import { memo } from 'react';
+import { memo, startTransition } from 'react';
 
 import { INBOX_SESSION_ID } from '@/const/session';
 import { AgentSettings } from '@/features/AgentSetting';
@@ -19,10 +19,14 @@ const Page = memo(() => {
       id={INBOX_SESSION_ID}
       meta={meta}
       onConfigChange={(config) => {
-        updateAgent({ config });
+        startTransition(() => {
+          updateAgent({ config });
+        });
       }}
       onMetaChange={(meta) => {
-        updateAgent({ meta });
+        startTransition(() => {
+          updateAgent({ meta });
+        });
       }}
     />
   );

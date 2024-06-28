@@ -2,7 +2,7 @@ import { Alert, Icon, Modal, Tooltip } from '@lobehub/ui';
 import { App, Button, Form, Popconfirm, Segmented } from 'antd';
 import { useResponsive } from 'antd-style';
 import { MoveUpRight } from 'lucide-react';
-import { memo, useEffect, useState } from 'react';
+import { memo, startTransition, useEffect, useState } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { Flexbox } from 'react-layout-kit';
 
@@ -32,7 +32,9 @@ const DevModal = memo<DevModalProps>(
     const { mobile } = useResponsive();
     const [form] = Form.useForm();
     useEffect(() => {
-      form.setFieldsValue(value);
+      startTransition(() => {
+        form.setFieldsValue(value);
+      });
     }, []);
 
     const buttonStyle = mobile ? { flex: 1 } : { margin: 0 };
