@@ -19,7 +19,7 @@ export class ClientService implements IFileService {
     }
     // arrayBuffer to url
     const url = URL.createObjectURL(new Blob([item.data!], { type: item.fileType }));
-    const base64 = Buffer.from(item.data!).toString('base64');
+    const base64 = this.arrayBufferToBase64(item.data!);
 
     return {
       base64Url: `data:${item.fileType};base64,${base64}`,
@@ -30,7 +30,15 @@ export class ClientService implements IFileService {
       url,
     };
   }
-
+  arrayBufferToBase64(buffer: ArrayBuffer) {
+    let binary = '';
+    const bytes = new Uint8Array(buffer);
+    const len = bytes.byteLength;
+    for (let i = 0; i < len; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+    return window.btoa(binary);
+  }
   async removeFile(id: string) {
     return FileModel.delete(id);
   }

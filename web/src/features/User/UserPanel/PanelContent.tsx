@@ -48,7 +48,7 @@ const PanelContent = memo<{ closePopover: () => void }>(({ closePopover }) => {
 
   return (
     <Flexbox gap={2} style={{ minWidth: 300 }}>
-      {/* {!enableAuth ? (
+      {!enableAuth ? (
         <>
           <UserInfo />
           <DataStatistics />
@@ -60,10 +60,7 @@ const PanelContent = memo<{ closePopover: () => void }>(({ closePopover }) => {
         </>
       ) : (
         <UserLoginOrSignup onClick={handleSignIn} />
-      )} */}
-
-      <UserInfo />
-      <DataStatistics />
+      )}
 
       <Menu items={mainItems} onClick={closePopover} />
       <Flexbox
