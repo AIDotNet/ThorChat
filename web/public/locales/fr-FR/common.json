@@ -44,7 +44,7 @@
     "and": "et",
     "feedback": {
       "action": "Partager des commentaires",
-      "desc": "Chaque idée et suggestion que vous avez est précieuse pour nous. Nous sommes impatients de connaître votre avis ! N'hésitez pas à nous contacter pour nous faire part de vos retours sur les fonctionnalités et l'expérience d'utilisation du produit, afin de nous aider à améliorer LobeChat.",
+      "desc": "Chaque idée et suggestion que vous avez est précieuse pour nous. Nous sommes impatients de connaître votre avis ! N'hésitez pas à nous contacter pour nous faire part de vos retours sur les fonctionnalités et l'expérience d'utilisation du produit, afin de nous aider à améliorer TokenChat.",
       "title": "Partagez vos précieux commentaires sur GitHub"
     },
     "later": "Plus tard",
@@ -191,9 +191,9 @@
   "telemetry": {
     "allow": "Autoriser",
     "deny": "Refuser",
-    "desc": "Nous aimerions recueillir anonymement des informations sur votre utilisation afin de nous aider à améliorer LobeChat et à vous offrir une meilleure expérience produit. Vous pouvez désactiver cette fonctionnalité à tout moment dans les paramètres - À propos.",
+    "desc": "Nous aimerions recueillir anonymement des informations sur votre utilisation afin de nous aider à améliorer TokenChat et à vous offrir une meilleure expérience produit. Vous pouvez désactiver cette fonctionnalité à tout moment dans les paramètres - À propos.",
     "learnMore": "En savoir plus",
-    "title": "Aider LobeChat à s'améliorer"
+    "title": "Aider TokenChat à s'améliorer"
   },
   "temp": "Temporaire",
   "terms": "Conditions de service",

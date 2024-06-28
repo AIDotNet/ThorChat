@@ -365,7 +365,7 @@ export const fetchSSE = async (url: string, options: RequestInit & FetchSSEOptio
         }
       },
       // we should keep open when page hidden, or it will case lots of token cost
-      // refs: https://github.com/lobehub/lobe-chat/issues/2501
+      // refs: https://github.comAIDotNet/lobe-chat/issues/2501
       openWhenHidden: true,
       signal: options.signal,
     });

@@ -44,7 +44,7 @@
     "and": "en",
     "feedback": {
       "action": "Feedback delen",
-      "desc": "Elk van uw ideeën en suggesties is van onschatbare waarde. We horen graag uw mening! Neem gerust contact met ons op voor feedback over productfuncties en gebruikerservaring om LobeChat te helpen verbeteren.",
+      "desc": "Elk van uw ideeën en suggesties is van onschatbare waarde. We horen graag uw mening! Neem gerust contact met ons op voor feedback over productfuncties en gebruikerservaring om TokenChat te helpen verbeteren.",
       "title": "Deel uw waardevolle feedback op GitHub"
     },
     "later": "Later",
@@ -191,9 +191,9 @@
   "telemetry": {
     "allow": "Toestaan",
     "deny": "Weigeren",
-    "desc": "We willen graag anonieme gebruiksgegevens verzamelen om LobeChat te verbeteren en een betere productervaring te bieden. Je kunt dit op elk moment uitschakelen in 'Instellingen' - 'Over'.",
+    "desc": "We willen graag anonieme gebruiksgegevens verzamelen om TokenChat te verbeteren en een betere productervaring te bieden. Je kunt dit op elk moment uitschakelen in 'Instellingen' - 'Over'.",
     "learnMore": "Meer informatie",
-    "title": "Help LobeChat verbeteren"
+    "title": "Help TokenChat verbeteren"
   },
   "temp": "tijdelijk",
   "terms": "algemene voorwaarden",

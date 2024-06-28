@@ -64,7 +64,7 @@ export class LobeGoogleAI implements LobeRuntimeAI {
             },
             model,
             // avoid wide sensitive words
-            // refs: https://github.com/lobehub/lobe-chat/pull/1418
+            // refs: https://github.comAIDotNet/lobe-chat/pull/1418
             safetySettings: [
               {
                 category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,

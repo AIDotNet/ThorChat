@@ -45,7 +45,7 @@ import { useBedrockProvider } from './Bedrock';
 import { useOllamaProvider } from './Ollama';
 import { useOpenAIProvider } from './OpenAI';
 
-const BASE_DOC_URL = 'https://lobehub.com/docs/usage/providers';
+const BASE_DOC_URL = 'https:/AIDotNet.com/docs/usage/providers';
 
 const AnthropicBrand = () => {
   const { isDarkMode } = useTheme();

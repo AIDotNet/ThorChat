@@ -3,7 +3,7 @@ import { formatDescLength, formatTitleLength } from '@/utils/genOG';
 
 export class Meta {
   public generate({
-    description = 'LobeChat offers you the best ChatGPT, OLLaMA, Gemini, Claude WebUI user experience',
+    description = 'TokenChat offers you the best ChatGPT, OLLaMA, Gemini, Claude WebUI user experience',
     title,
     image = '/og/cover.png?v=1',
     url,
@@ -21,7 +21,7 @@ export class Meta {
     const formatedTitle = formatTitleLength(title, 21);
     // eslint-disable-next-line no-param-reassign
     const formatedDescription = formatDescLength(description, tags);
-    const siteTitle = title.includes('LobeChat') ? title : title + ' · LobeChat';
+    const siteTitle = title.includes('TokenChat') ? title : title + ' · TokenChat';
     return {
       alternates: { canonical: getCanonicalUrl(url) },
       description: formatedDescription,
@@ -83,7 +83,7 @@ export class Meta {
         },
       ],
       locale: 'en-US',
-      siteName: 'LobeChat',
+      siteName: 'TokenChat',
       title,
       type,
       url,

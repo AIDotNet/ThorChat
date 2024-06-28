@@ -24,7 +24,7 @@ export const AUTHOR_LIST = {
     avatar: 'https://avatars.githubusercontent.com/u/131470832?v=4',
     desc: 'Official Account',
     name: 'LobeHub',
-    url: 'https://github.com/lobehub',
+    url: 'https://github.comAIDotNet',
   },
 };
 
@@ -72,7 +72,7 @@ class Ld {
     return {
       '@id': this.getId(SITE_URL, '#organization'),
       '@type': 'Organization',
-      'alternateName': 'LobeChat',
+      'alternateName': 'TokenChat',
       'contactPoint': {
         '@type': 'ContactPoint',
         'contactType': 'customer support',
@@ -92,7 +92,7 @@ class Ld {
       'name': 'LobeHub',
       'sameAs': [
         X,
-        'https://github.com/lobehub',
+        'https://github.comAIDotNet',
         'https://medium.com/@lobehub',
         'https://www.youtube.com/@lobehub',
       ],
@@ -192,7 +192,7 @@ class Ld {
       '@type': 'WebSite',
       'description': pkg.description,
       'inLanguage': 'en-US',
-      'name': 'LobeChat',
+      'name': 'TokenChat',
       'publisher': {
         '@id': this.getId(SITE_URL, '#organization'),
       },
@@ -207,7 +207,7 @@ class Ld {
   }
 
   private fixTitle(title: string) {
-    return title.includes('LobeChat') ? title : `${title} · LobeChat`;
+    return title.includes('TokenChat') ? title : `${title} · TokenChat`;
   }
 
   private fixUrl(url: string) {
