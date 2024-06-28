@@ -35,7 +35,7 @@ app.UseCors("AllowAll");
 
 app.UseResponseCompression();
 
-app.UseDefaultFiles("index.html");
+app.UseDefaultFiles();
 app.UseStaticFiles();
 
 
