@@ -1,5 +1,7 @@
-﻿using Thor.Abstractions;
+﻿using Azure.AI.OpenAI;
+using Thor.Abstractions;
 using Thor.Abstractions.ObjectModels.ObjectModels.RequestModels;
+using Thor.AzureOpenAI;
 using Thor.OpenAI;
 using ThorChat.Service.Options;
 using ThorChat.Service.Utils;
@@ -51,6 +53,18 @@ public class ChatService
 			{
 				Address = payload.Endpoint ?? ThorOptions.OPENAI_PROXY_URL,
 				Key = payload.ApiKey ?? ThorOptions.OPENAI_API_KEY
+			};
+		}
+		else if (provider.Equals("azureopenai", StringComparison.OrdinalIgnoreCase))
+		{
+			apiChatCompletionService =
+				context.RequestServices.GetRequiredKeyedService<IApiChatCompletionService>(AzureOpenAIServiceOptions.ServiceName);
+
+			chatOptions = new ChatOptions()
+			{
+				Other = payload.AzureApiVersion ?? ThorOptions.AZURE_OPENAI_API_VERSION,
+				Address = payload.Endpoint ?? ThorOptions.AZURE_OPENAI_PROXY_URL,
+				Key = payload.ApiKey ?? ThorOptions.AZURE_OPENAI_API_KEY
 			};
 		}
 		else

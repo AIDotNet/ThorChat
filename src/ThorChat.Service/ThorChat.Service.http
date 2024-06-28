@@ -1,6 +1,0 @@
-@ThorChat.Service_HostAddress = http://localhost:5269
-
-GET {{ThorChat.Service_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
