@@ -6,7 +6,7 @@ namespace ThorChat.Service.Utils;
 
 public class JwtParser
 {
-    public static T ParseJwt<T>(string token) where T : class
+    public static T? ParseJwt<T>(string token) where T : class
     {
         var handler = new JwtSecurityTokenHandler();
         var jsonToken = handler.ReadToken(token) as JwtSecurityToken;

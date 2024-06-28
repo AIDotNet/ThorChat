@@ -4,8 +4,9 @@ using ThorChat.Service.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
-ThorOptions.Init(builder.Configuration);
+builder.AddServiceDefaults();
 
+ThorOptions.Init(builder.Configuration);
 
 builder.Services
     .AddOpenAIService()
@@ -28,28 +29,15 @@ builder.Services.AddTransient<MarketService>()
 
 var app = builder.Build();
 
-// 重定向到 index.html
-app.Use(async (context, next) =>
-{
-    if (context.Request.Path == "/")
-    {
-        context.Request.Path = "/index.html";
-    }
-
-    await next();
-
-    if (context.Response.StatusCode == 404)
-    {
-        context.Request.Path = "/index.html";
-        await next();
-    }
-});
+app.MapDefaultEndpoints();
 
 app.UseCors("AllowAll");
 
 app.UseResponseCompression();
 
+app.UseDefaultFiles("index.html");
 app.UseStaticFiles();
+
 
 app.MapGet("/api/market",
     (MarketService service, HttpContext context, string locale) => service.GetAsync(context, locale));
