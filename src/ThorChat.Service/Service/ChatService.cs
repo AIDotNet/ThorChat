@@ -1,6 +1,5 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Serialization;
-using Azure.AI.OpenAI;
 using Thor.Abstractions;
 using Thor.Abstractions.ObjectModels.ObjectModels.RequestModels;
 using Thor.AzureOpenAI;

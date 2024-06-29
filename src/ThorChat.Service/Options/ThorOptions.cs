@@ -15,7 +15,6 @@ public static class ThorOptions
 							   configuration["Thor:AzureOpenAI:ApiKey"];
 		AZURE_OPENAI_API_VERSION = Environment.GetEnvironmentVariable("AZURE_OPENAI_API_VERSION") ??
 								   configuration["Thor:AzureOpenAI:ApiVersion"];
-
 	}
 
 	/// <summary>

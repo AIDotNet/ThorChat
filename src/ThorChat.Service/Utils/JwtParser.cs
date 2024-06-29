@@ -4,7 +4,10 @@ using System.Text.Json.Serialization;
 
 namespace ThorChat.Service.Utils;
 
-public class JwtParser
+/// <summary>
+/// Jwt解析器
+/// </summary>
+public static class JwtParser
 {
     public static T? ParseJwt<T>(string token) where T : class
     {

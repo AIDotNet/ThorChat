@@ -1,4 +1,4 @@
-﻿namespace ThorChat.Service;
+﻿namespace ThorChat.Service.Utils;
 
 
 public static class Localization
@@ -10,8 +10,8 @@ public static class Localization
         return NormalizeLocale(locale) == DEFAULT_LANG || !SupportedLocales.Contains(locale);
     }
 
-    public static readonly string[] Locales = new[]
-    {
+    private static readonly string[] Locales =
+    [
         "ar",
         "bg-BG",
         "de-DE",
@@ -26,7 +26,7 @@ public static class Localization
         "zh-CN",
         "zh-TW",
         "vi-VN"
-    };
+    ];
 
     public static string NormalizeLocale(string locale = null)
     {
