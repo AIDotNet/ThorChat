@@ -25,7 +25,7 @@ public class ChatService
         var token = context.Request.Headers[ThorChatAuth];
         if (string.IsNullOrWhiteSpace(token))
         {
-            await Write401Unauthorized(context, provider);
+            await Write401Unauthorized(context, provider, "InvalidToken");
             return;
         }
 
@@ -35,7 +35,7 @@ public class ChatService
         {
             if (payload == null || payload?.AccessCode != ThorOptions.ACCESS_CODE)
             {
-                await Write401Unauthorized(context, provider);
+                await Write401Unauthorized(context, provider, "InvalidAccessCode");
                 return;
             }
         }
@@ -79,29 +79,30 @@ public class ChatService
         await foreach (var item in apiChatCompletionService.StreamChatAsync(completionCreateRequest, chatOptions,
                            context.RequestAborted))
         {
-            await context.Response.WriteAsync(string.Format(DataTextTemplate, id, JsonSerializer.Serialize(item,new JsonSerializerOptions()
-            {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                WriteIndented = false,
-                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
-                PropertyNameCaseInsensitive = true
-            })));
+            await context.Response.WriteAsync(string.Format(DataTextTemplate, id, JsonSerializer.Serialize(item,
+                new JsonSerializerOptions()
+                {
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                    WriteIndented = false,
+                    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+                    PropertyNameCaseInsensitive = true
+                })));
         }
 
         await context.Response.WriteAsync(string.Format(DataStopTemplate, id));
     }
 
-    public async ValueTask Write401Unauthorized(HttpContext context, string provider)
+    public async ValueTask Write401Unauthorized(HttpContext context, string provider, string errorType)
     {
         context.Response.StatusCode = StatusCodes.Status401Unauthorized;
         await context.Response.WriteAsJsonAsync(new
         {
-            errorType = "InvalidToken",
+            errorType = errorType,
             body = new
             {
                 error = new
                 {
-                    errorType = "InvalidToken",
+                    errorType = errorType,
                 },
                 provider
             }

@@ -3,6 +3,9 @@ using ThorChat.Service.Utils;
 
 namespace ThorChat.Service.Service;
 
+/// <summary>
+/// Market service.
+/// </summary>
 public class MarketService
 {
     public async ValueTask GetAsync(HttpContext context, string locale)
