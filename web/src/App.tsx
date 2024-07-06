@@ -26,6 +26,8 @@ const MePage = lazy(() => import('@/app/(main)/(mobile)/me/(home)/page'));
 const MeDataLayout = lazy(() => import('@/app/(main)/(mobile)/me/data/layout'));
 const MeDataPage = lazy(() => import('@/app/(main)/(mobile)/me/data/page'));
 const MainLayout = lazy(() => import("./app/(main)/layout"));
+const ChatSettingLayout = lazy(() => import("./app/(main)/chat/settings/layout"));
+const ChatSettingPage = lazy(() => import("./app/(main)/chat/settings/page"));
 
 const router = createBrowserRouter([
   {
@@ -74,7 +76,17 @@ const router = createBrowserRouter([
           <ChatLayout>
           </ChatLayout>
         </MainLayout>
-        </Suspense>
+        </Suspense>,
+        children: [
+          {
+            path: '*',
+            element: <Suspense fallback={<Loading />}>
+              <ChatSettingLayout >
+                <ChatSettingPage />
+              </ChatSettingLayout>
+            </Suspense>
+          }
+        ]
       },
       {
         path: '/settings/modal',

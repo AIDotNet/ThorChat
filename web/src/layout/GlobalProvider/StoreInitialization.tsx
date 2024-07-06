@@ -60,10 +60,6 @@ const StoreInitialization = memo(() => {
   useEffect(() => {
     if (mobile) {
       navigate('/me');
-    } else {
-      // navigate('/chat');
-      // navigate('/chat/settings/modal');
-      // navigate('/settings/modal');
     }
   }, [navigate, mobile]);
 

@@ -56,7 +56,7 @@ public class ChatService
                 Key = payload.ApiKey ?? ThorOptions.OPENAI_API_KEY
             };
         }
-        else if (provider.Equals("azureopenai", StringComparison.OrdinalIgnoreCase))
+        else if (provider.Equals("azure", StringComparison.OrdinalIgnoreCase))
         {
             apiChatCompletionService =
                 context.RequestServices.GetRequiredKeyedService<IApiChatCompletionService>(AzureOpenAIServiceOptions
