@@ -11,7 +11,10 @@
 - AZURE_OPENAI_PROXY_URL：AzureOpenAI请求端点
 - AZURE_OPENAI_API_KEY：Azure请求Key
 - AZURE_OPENAI_API_VERSION：请求版本
-
+- DEFAULT_MODEL: 默认模型（默认配置翻译模型，标题命名模型，助手分享模型）
+- DEFAULT_AVATAR: 助手头像
+- DefaultUserAvatar: 默认用户头像
+- DEFAULT_INBOX_AVATAR: 默认助手头像
 
 
 ## Docker部署

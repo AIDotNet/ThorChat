@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A7464AFF-FCD1-4348-BBEE-3CE3B8F62DB0}"
 	ProjectSection(SolutionItems) = preProject
 		docker-compose.yml = docker-compose.yml
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThorChat.AppHost", "src\ThorChat.AppHost\ThorChat.AppHost.csproj", "{7075B116-3B04-47CF-965B-B2DD5F447440}"
