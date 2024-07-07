@@ -5,7 +5,7 @@
 
 ## 环境变量
 
-- ACCESS_CODE: 设置访问密码
+- ACCESS_CODE: 设置访问密码 （"ThorChat,fastWiki" //多个秘钥用英文逗号隔开）
 - OPENAI_API_KEY： OpenAI请求默认的Key（如果用户没设置Key则使用环境变量设置的）
 - OPENAI_PROXY_URL：OpenAI请求默认的Url（如果用户没设置Url则使用环境变量设置的）
 - AZURE_OPENAI_PROXY_URL：AzureOpenAI请求端点

@@ -28,12 +28,12 @@ public class ChatService
             await Write401Unauthorized(context, provider, "InvalidToken");
             return;
         }
-
         var payload = JwtParser.ParseJwt<JWTPayload>(token);
 
         if (!string.IsNullOrWhiteSpace(ThorOptions.ACCESS_CODE))
         {
-            if (payload == null || payload?.AccessCode != ThorOptions.ACCESS_CODE)
+            var accessCodes = ThorOptions.ACCESS_CODE.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+            if (payload == null || !accessCodes.Any(code => code.Trim().Equals(payload.AccessCode, StringComparison.Ordinal)))
             {
                 await Write401Unauthorized(context, provider, "InvalidAccessCode");
                 return;
