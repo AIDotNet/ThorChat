@@ -85,7 +85,8 @@ public class ChatService
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                     WriteIndented = false,
                     DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
-                    PropertyNameCaseInsensitive = true
+                    PropertyNameCaseInsensitive = true,
+                    Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
                 })));
         }
 

@@ -96,6 +96,6 @@ export const DEFAULT_LLM_CONFIG: UserModelProviderConfig = {
   },
 };
 
-export const DEFAULT_MODEL = 'gpt-3.5-turbo';
+export const DEFAULT_MODEL = window.thor?.DEFAULT_MODEL;
 
 export const DEFAULT_PROVIDER = ModelProvider.OpenAI;

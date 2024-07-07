@@ -7,6 +7,18 @@ declare global {
   }
 }
 
+
+declare global {
+  interface Window {
+    thor: {
+      DEFAULT_MODEL: string;
+      DEFAULT_AVATAR: string;
+      DEFAULT_INBOX_AVATAR: string;
+      DEFAULT_USER_AVATAR: string;
+    };
+  }
+}
+
 export const getAppConfig = () => {
   const ACCESS_CODES = process.env.ACCESS_CODE?.split(',').filter(Boolean) || [];
 
