@@ -52,8 +52,8 @@ public class ChatService
                     .ServiceName);
             chatOptions = new ChatOptions()
             {
-                Address = payload.Endpoint ?? ThorOptions.OPENAI_PROXY_URL,
-                Key = payload.ApiKey ?? ThorOptions.OPENAI_API_KEY
+                Address = payload?.Endpoint ?? ThorOptions.OPENAI_PROXY_URL,
+                Key = payload?.ApiKey ?? ThorOptions.OPENAI_API_KEY
             };
         }
         else if (provider.Equals("azure", StringComparison.OrdinalIgnoreCase))
@@ -64,9 +64,9 @@ public class ChatService
 
             chatOptions = new ChatOptions()
             {
-                Other = payload.AzureApiVersion ?? ThorOptions.AZURE_OPENAI_API_VERSION,
-                Address = payload.Endpoint ?? ThorOptions.AZURE_OPENAI_PROXY_URL,
-                Key = payload.ApiKey ?? ThorOptions.AZURE_OPENAI_API_KEY
+                Other = payload?.AzureApiVersion ?? ThorOptions.AZURE_OPENAI_API_VERSION,
+                Address = payload?.Endpoint ?? ThorOptions.AZURE_OPENAI_PROXY_URL,
+                Key = payload?.ApiKey ?? ThorOptions.AZURE_OPENAI_API_KEY
             };
         }
         else

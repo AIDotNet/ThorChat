@@ -7,11 +7,9 @@ EXPOSE 8081
 FROM node as builder
 WORKDIR /src
 COPY web .
-RUN yarn config set strict-ssl false
 RUN npm config set registry https://registry.npmmirror.com
-RUN npm i -g bun
-RUN bun install
-RUN bun run build
+RUN npm install
+RUN npm run build
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release

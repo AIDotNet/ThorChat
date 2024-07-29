@@ -20,7 +20,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="OpenAI" Version="2.0.0-beta.7" />
       <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.6.2" />
       <PackageReference Include="Thor.Abstractions" Version="0.1.0" />
       <PackageReference Include="Thor.AzureOpenAI" Version="0.1.0" />
