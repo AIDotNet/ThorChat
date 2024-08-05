@@ -183,8 +183,6 @@ public class ChatService(IHttpClientFactory httpClientFactory)
             var response = await httpClient.HttpRequest(address + "/v1/images/generations", input
                 , key);
 
-            var str = await response.Content.ReadAsStringAsync();
-            
             var value = await response.Content.ReadFromJsonAsync<ChatTextToImageResult>();
 
             await context.Response.WriteAsJsonAsync(value.Data.Select(x=>x.Url));
