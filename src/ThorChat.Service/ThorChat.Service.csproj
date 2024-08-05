@@ -20,10 +20,8 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="Azure.AI.OpenAI" Version="2.0.0-beta.2" />
       <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.6.2" />
-      <PackageReference Include="Thor.Abstractions" Version="0.1.0" />
-      <PackageReference Include="Thor.AzureOpenAI" Version="0.1.0" />
-      <PackageReference Include="Thor.OpenAI" Version="0.1.0" />
     </ItemGroup>
 
     <ItemGroup>

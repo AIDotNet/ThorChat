@@ -597,8 +597,8 @@ export const chatMessage: StateCreator<
     set(
       {
         toolCallingStreamIds: produce(get().toolCallingStreamIds, (draft) => {
-          if (!!streaming) {
-            draft[id] = streaming;
+          if (!streaming) {
+            draft[id] = streaming!;
           } else {
             delete draft[id];
           }

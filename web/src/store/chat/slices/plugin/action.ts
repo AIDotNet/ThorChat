@@ -282,6 +282,9 @@ export const chatPlugin: StateCreator<
       .map((toolCall): ChatToolPayload | null => {
         let payload: ChatToolPayload;
 
+        if(!toolCall.function?.name){
+          return null;
+        }
         const [identifier, apiName, type] = toolCall.function.name.split(PLUGIN_SCHEMA_SEPARATOR);
 
         if (!apiName) return null;

@@ -307,11 +307,46 @@ export const fetchSSE = async (url: string, options: RequestInit & FetchSSEOptio
         triggerOnMessageHandler = true;
         let data;
         try {
-          const value  = JSON.parse(ev.data);
-          if(value.choices[0].delta && value.choices[0].delta?.content) {
+          const value = JSON.parse(ev.data);
+          // 如果value还是字符串，说明是文本消息
+          if (typeof value === 'string') {
+            data = value;
+          } else if (!value.choices || value.choices.length === 0 || !value.choices[0].delta) {
+
+            if (value.delta && value.delta.toolCalls) {
+              const vTools = value.delta.toolCalls;
+              // get finial
+              // if there is no tool calls, we should initialize the tool calls
+              if (!toolCalls) toolCalls = [];
+              toolCalls = parseToolCalls(toolCalls, vTools);
+              if (smoothing) {
+                // make the tool calls smooth
+
+                // push the tool calls to the smooth queue
+                toolCallsController.pushToQueue(toolCalls as MessageToolCallChunk[]);
+                // if there is no animation active, we should start the animation
+                if (toolCallsController.isAnimationActives.some((value) => !value)) {
+                  toolCallsController.startAnimations();
+                }
+
+                options.onMessageHandle?.({
+                  tool_calls: toolCalls,
+                  type: 'tool_calls',
+                });
+              } else {
+                options.onMessageHandle?.({
+                  tool_calls: toolCalls,
+                  type: 'tool_calls',
+                });
+              }
+            }
+
+            return;
+          }
+          else if (value.choices[0].delta && value.choices[0].delta?.content) {
             data = value.choices[0].delta.content;
           }else{
-            return;
+            data = '';
           }
         } catch (e) {
           console.warn('parse error, fallback to stream', e);

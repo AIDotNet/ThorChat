@@ -1,15 +1,12 @@
-﻿using System.Text.Json;
-using System.Text.Json.Serialization;
-using Thor.Abstractions;
-using Thor.Abstractions.ObjectModels.ObjectModels.RequestModels;
-using Thor.AzureOpenAI;
-using Thor.OpenAI;
+﻿using System.Text;
+using System.Text.Json;
+using ThorChat.Service.Model;
 using ThorChat.Service.Options;
 using ThorChat.Service.Utils;
 
 namespace ThorChat.Service.Service;
 
-public class ChatService
+public class ChatService(IHttpClientFactory httpClientFactory)
 {
     private const string ThorChatAuth = "X-thor-chat-auth";
 
@@ -19,8 +16,7 @@ public class ChatService
     private const string DataStopTemplate =
         "id: {0}\nevent: stop\ndata: \"stop\"\n\n";
 
-    public async ValueTask PostAsync(HttpContext context, string provider,
-        ChatCompletionCreateRequest completionCreateRequest)
+    public async ValueTask PostAsync(HttpContext context, string provider)
     {
         var token = context.Request.Headers[ThorChatAuth];
         if (string.IsNullOrWhiteSpace(token))
@@ -41,33 +37,112 @@ public class ChatService
         }
 
         context.Response.Headers.ContentType = "text/event-stream";
+        var id = "chatcmpl-" + Guid.NewGuid().ToString("N");
 
-        ChatOptions chatOptions;
-        IApiChatCompletionService apiChatCompletionService;
+        var address = (payload?.Endpoint ?? ThorOptions.OPENAI_PROXY_URL)?.TrimEnd('/');
+        var key = (payload?.ApiKey ?? ThorOptions.OPENAI_API_KEY);
 
+        var httpClient = httpClientFactory.CreateClient("OpenAI");
         if (provider.Equals("openai", StringComparison.OrdinalIgnoreCase))
         {
-            apiChatCompletionService =
-                context.RequestServices.GetRequiredKeyedService<IApiChatCompletionService>(OpenAIServiceOptions
-                    .ServiceName);
-            chatOptions = new ChatOptions()
+            using var memoryStream = new MemoryStream();
+            await context.Request.Body.CopyToAsync(memoryStream);
+            var str = Encoding.UTF8.GetString(memoryStream.ToArray());
+
+            var response = await httpClient.HttpRequestRaw(address + "/v1/chat/completions", str
+                , key);
+
+            using StreamReader reader = new(await response.Content.ReadAsStreamAsync(context.RequestAborted));
+
+
+            string? line = string.Empty;
+            while ((line = await reader.ReadLineAsync().ConfigureAwait(false)) != null)
             {
-                Address = payload?.Endpoint ?? ThorOptions.OPENAI_PROXY_URL,
-                Key = payload?.ApiKey ?? ThorOptions.OPENAI_API_KEY
-            };
+                line += Environment.NewLine;
+
+                if (line.StartsWith('{'))
+                {
+                    await context.Response.WriteAsync(string.Format(DataTextTemplate,
+                        "chatcmpl-" + Guid.NewGuid().ToString("N"), line));
+                    break;
+                }
+
+                if (line.StartsWith("data:"))
+                    line = line["data:".Length..];
+
+                line = line.Trim();
+
+                if (line == "[DONE]")
+                {
+                    break;
+                }
+
+                if (line.StartsWith(":"))
+                {
+                    continue;
+                }
+
+
+                if (string.IsNullOrWhiteSpace(line)) continue;
+
+                await context.Response.WriteAsync(string.Format(DataTextTemplate,
+                    "chatcmpl-" + Guid.NewGuid().ToString("N"), line));
+            }
         }
         else if (provider.Equals("azure", StringComparison.OrdinalIgnoreCase))
         {
-            apiChatCompletionService =
-                context.RequestServices.GetRequiredKeyedService<IApiChatCompletionService>(AzureOpenAIServiceOptions
-                    .ServiceName);
+            var client = httpClientFactory.CreateClient("OpenAI");
 
-            chatOptions = new ChatOptions()
+
+            using var memoryStream = new MemoryStream();
+            await context.Request.Body.CopyToAsync(memoryStream);
+            var str = Encoding.UTF8.GetString(memoryStream.ToArray());
+            var model = JsonSerializer.Deserialize<ChatCompletionInput>(str);
+
+            var url = AzureOpenAIFactory.GetAddress(address, payload?.AzureApiVersion!,
+                model!.Model);
+
+            var response = await client.HttpRequestAzureRaw(url,
+                str, key);
+
+            using var stream = new StreamReader(await response.Content.ReadAsStreamAsync(context.RequestAborted));
+
+            using StreamReader reader = new(await response.Content.ReadAsStreamAsync(context.RequestAborted));
+            string? line = string.Empty;
+            while ((line = await reader.ReadLineAsync().ConfigureAwait(false)) != null)
             {
-                Other = payload?.AzureApiVersion ?? ThorOptions.AZURE_OPENAI_API_VERSION,
-                Address = payload?.Endpoint ?? ThorOptions.AZURE_OPENAI_PROXY_URL,
-                Key = payload?.ApiKey ?? ThorOptions.AZURE_OPENAI_API_KEY
-            };
+                line += Environment.NewLine;
+
+                if (line.StartsWith('{'))
+                {
+                    // 如果是json数据则直接返回
+                    await context.Response.WriteAsync(string.Format(DataTextTemplate,
+                        "chatcmpl-" + Guid.NewGuid().ToString("N"), line));
+
+                    break;
+                }
+
+                if (line.StartsWith("data:"))
+                    line = line["data:".Length..];
+
+                line = line.Trim();
+
+                if (line == "[DONE]")
+                {
+                    break;
+                }
+
+                if (line.StartsWith(":"))
+                {
+                    continue;
+                }
+
+
+                if (string.IsNullOrWhiteSpace(line)) continue;
+
+                await context.Response.WriteAsync(string.Format(DataTextTemplate,
+                    "chatcmpl-" + Guid.NewGuid().ToString("N"), line));
+            }
         }
         else
         {
@@ -75,22 +150,45 @@ public class ChatService
             return;
         }
 
-        var id = "chatcmpl-" + Guid.NewGuid().ToString("N");
-        await foreach (var item in apiChatCompletionService.StreamChatAsync(completionCreateRequest, chatOptions,
-                           context.RequestAborted))
+        await context.Response.WriteAsync(string.Format(DataStopTemplate, id));
+    }
+
+    public async ValueTask TextToImage(HttpContext context, string provider, ChatTextToImageInput input)
+    {
+        var token = context.Request.Headers[ThorChatAuth];
+        if (string.IsNullOrWhiteSpace(token))
         {
-            await context.Response.WriteAsync(string.Format(DataTextTemplate, id, JsonSerializer.Serialize(item,
-                new JsonSerializerOptions()
-                {
-                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                    WriteIndented = false,
-                    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
-                    PropertyNameCaseInsensitive = true,
-                    Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
-                })));
+            await Write401Unauthorized(context, provider, "InvalidToken");
+            return;
         }
 
-        await context.Response.WriteAsync(string.Format(DataStopTemplate, id));
+        var payload = JwtParser.ParseJwt<JWTPayload>(token);
+
+        if (!string.IsNullOrWhiteSpace(ThorOptions.ACCESS_CODE))
+        {
+            if (payload == null || payload?.AccessCode != ThorOptions.ACCESS_CODE)
+            {
+                await Write401Unauthorized(context, provider, "InvalidAccessCode");
+                return;
+            }
+        }
+
+        var address = (payload?.Endpoint ?? ThorOptions.OPENAI_PROXY_URL)?.TrimEnd('/');
+        var key = (payload?.ApiKey ?? ThorOptions.OPENAI_API_KEY);
+
+        var httpClient = httpClientFactory.CreateClient("OpenAI");
+
+        if (provider.Equals("openai", StringComparison.OrdinalIgnoreCase))
+        {
+            var response = await httpClient.HttpRequest(address + "/v1/images/generations", input
+                , key);
+
+            var str = await response.Content.ReadAsStringAsync();
+            
+            var value = await response.Content.ReadFromJsonAsync<ChatTextToImageResult>();
+
+            await context.Response.WriteAsJsonAsync(value.Data.Select(x=>x.Url));
+        }
     }
 
     public async ValueTask Write401Unauthorized(HttpContext context, string provider, string errorType)
