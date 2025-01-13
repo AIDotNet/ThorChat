@@ -13,7 +13,7 @@ public class FileHttpTransformer : HttpTransformer
         var result = await base.TransformResponseAsync(httpContext, proxyResponse, cancellationToken);
 
         // 如果请求的是 /
-        if (httpContext.Response.ContentType == "text/html" &&
+        if (httpContext.Response.ContentType == "text/html" ||
             httpContext.Request.Path == "/")
         {
             // 读取body

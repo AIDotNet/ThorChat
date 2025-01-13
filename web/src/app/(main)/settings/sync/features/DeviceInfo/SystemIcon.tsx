@@ -4,7 +4,7 @@ import {
   SiBlackberry,
   SiGooglechrome,
   SiLinux,
-  SiWindows11,
+  SiGitforwindows,
 } from '@icons-pack/react-simple-icons';
 import { memo } from 'react';
 
@@ -13,7 +13,7 @@ const SystemIcon = memo<{ title?: string }>(({ title }) => {
 
   if (['Mac OS', 'iOS', 'iPadOS'].includes(title)) return <SiApple size={24} />;
 
-  if (['Windows'].includes(title)) return <SiWindows11 size={24} />;
+  if (['Windows'].includes(title)) return <SiGitforwindows size={24} />;
 
   if (title === 'Android') return <SiAndroid size={24} />;
 

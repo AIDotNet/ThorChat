@@ -1,5 +1,4 @@
-import { ActionIconGroup } from '@lobehub/ui';
-import { ActionsBarProps } from '@lobehub/ui/es/ChatList/ActionsBar';
+import { ActionIconGroup, ActionsBarProps } from '@lobehub/ui';
 import { memo } from 'react';
 
 import { useChatListActionsBar } from '../hooks/useChatListActionsBar';

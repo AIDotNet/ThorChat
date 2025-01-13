@@ -15,7 +15,7 @@ import {
   Perplexity,
   Stepfun,
   Together,
-  Tongyi,
+  Qwen,
   ZeroOne,
   Zhipu,
 } from '@lobehub/icons';
@@ -107,7 +107,7 @@ const ModelProviderIcon = memo<ModelProviderIconProps>(({ provider }) => {
     }
 
     case ModelProvider.Qwen: {
-      return <Tongyi size={20} />;
+      return <Qwen size={20} />;
     }
 
     case ModelProvider.Stepfun: {

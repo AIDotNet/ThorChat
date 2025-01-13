@@ -1,9 +1,8 @@
 
 
 import { memo } from 'react';
+import { LogoThree, LogoSpline } from '@lobehub/ui/brand';
 import { Center } from 'react-layout-kit';
-import LogoThree from '@lobehub/ui/es/LogoThree'
-import LogoSpline from '@lobehub/ui/es/LogoThree/LogoSpline'
 
 const Logo = memo<{ mobile?: boolean }>(({ mobile }) => {
   return mobile ? (

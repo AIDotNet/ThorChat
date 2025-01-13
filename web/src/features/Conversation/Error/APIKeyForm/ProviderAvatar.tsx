@@ -9,8 +9,8 @@ import {
   OpenAI,
   OpenRouter,
   Perplexity,
+  Qwen,
   Together,
-  Tongyi,
   ZeroOne,
   Zhipu,
 } from '@lobehub/icons';
@@ -68,7 +68,7 @@ const ProviderAvatar = memo<ProviderAvatarProps>(({ provider }) => {
     }
 
     case ModelProvider.Qwen: {
-      return <Tongyi color={Tongyi.colorPrimary} size={56} />;
+      return <Qwen color={Qwen.colorPrimary} size={56} />;
     }
 
     case ModelProvider.TogetherAI: {
