@@ -4,7 +4,7 @@ WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
 
-FROM node as builder
+FROM node:20.18-alpine3.21 as builder
 WORKDIR /src
 COPY web .
 RUN npm config set registry https://registry.npmmirror.com

@@ -1,10 +1,9 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom"
-import { Suspense, lazy, useEffect } from "react"
+import { Suspense, lazy } from "react"
 import './App.css'
 
 import Loading from "./app/(main)/(loading)/Client"
-import SettingLoading from "./app/(main)/settings/loading"
-import { VITE_API_URL } from "./utils/env"
+const SettingLoading = lazy(() => import("./app/(main)/settings/loading"))
 const RootLayout = lazy(() => import("./app/layout"));
 const WelcomeLayout = lazy(() => import("./app/(main)/welcome/layout"));
 const WelcomePage = lazy(() => import("./app/(main)/welcome/page"));

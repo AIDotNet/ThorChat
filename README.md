@@ -15,7 +15,7 @@
 - DEFAULT_AVATAR: 助手头像
 - DefaultUserAvatar: 默认用户头像
 - DEFAULT_INBOX_AVATAR: 默认助手头像
-
+- OPENAI_MODEL_LIST: gpt-4=gpt-4<16385>,gpt-4-32k=gpt-4-32k<32768>,gpt-3.5-turbo-16k=gpt-3.5-turbo-16k<16_385>,gpt-3.5-turbo-1106=gpt-3.5-turbo-16k<16385>,gpt-4-0125-preview=gpt-4-turbo<32768>,gpt-4-vision-preview=gpt-4-vision<32768:vision>
 
 ## Docker部署
 
