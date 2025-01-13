@@ -1,0 +1,20 @@
+name: 构建Thor镜像
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: 登录Docker Hub
+        run: docker login -u aidotnet -p ${{ secrets.DOCKER }} 
+      - name: 构建镜像
+        run:  docker build . --file src/ThorChat.Service/Dockerfile --tag aidotnet/thor-chat:latest 
+      - name: 推送镜像
+        run:  docker push aidotnet/thor-chat:latest
