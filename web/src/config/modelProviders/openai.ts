@@ -204,7 +204,7 @@ let OpenAI: ModelProviderCard = {
   name: 'OpenAI'
 };
 
-if (window.thor.OPENAI_MODEL_LIST) {
+if (window?.thor?.OPENAI_MODEL_LIST) {
   const enabledModels = window.thor.OPENAI_MODEL_LIST.split(',');
   const models = [] as ChatModelCard[];
   for (const model of enabledModels) {

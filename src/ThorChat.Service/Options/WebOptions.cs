@@ -16,7 +16,7 @@ public class WebOptions
         OPENAI_MODEL_LIST = Environment.GetEnvironmentVariable("OPENAI_MODEL_LIST") ?? string.Empty;
 
         // 获取wwwroot下的index.html
-        var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "wwwroot", "index.html");
+        var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "index.html");
 
         if (!File.Exists(path))
         {
