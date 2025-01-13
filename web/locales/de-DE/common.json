@@ -19,6 +19,21 @@
     "today": "Heute",
     "topics": "Themen"
   },
+  "appLoading": {
+    "appIdle": "Ready to start",
+    "appInitializing": "Application is starting...",
+    "failed": "Sorry, the application initialization failed. Please check the details for troubleshooting.",
+    "finished": "Database initialization completed",
+    "goToChat": "Loading chat page...",
+    "initAuth": "Initializing authentication service...",
+    "initUser": "Initializing user status...",
+    "initializing": "Initializing PGlite database...",
+    "loadingDependencies": "Initializing dependencies...",
+    "loadingWasm": "Loading WASM module...",
+    "migrating": "Performing database migration...",
+    "ready": "Database is ready",
+    "showDetail": "View details"
+  },
   "defaultAgent": "Standardassistent",
   "defaultSession": "Standardassistent",
   "delete": "Löschen",

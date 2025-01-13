@@ -19,6 +19,21 @@
     "today": "Hôm nay",
     "topics": "Chủ đề"
   },
+  "appLoading": {
+    "appIdle": "Sẵn sàng khởi động",
+    "appInitializing": "Đang khởi động ứng dụng...",
+    "failed": "Rất tiếc, ứng dụng không khởi tạo được, vui lòng xem chi tiết để kiểm tra.",
+    "finished": "Khởi tạo cơ sở dữ liệu hoàn tất",
+    "goToChat": "Đang tải trang trò chuyện...",
+    "initAuth": "Đang khởi tạo dịch vụ xác thực...",
+    "initUser": "Đang khởi tạo trạng thái người dùng...",
+    "initializing": "Đang khởi tạo cơ sở dữ liệu PGlite...",
+    "loadingDependencies": "Đang khởi tạo phụ thuộc...",
+    "loadingWasm": "Đang tải mô-đun WASM...",
+    "migrating": "Đang thực hiện di chuyển bảng dữ liệu...",
+    "ready": "Cơ sở dữ liệu đã sẵn sàng",
+    "showDetail": "Xem chi tiết"
+  },
   "defaultAgent": "Trợ lý mặc định",
   "defaultSession": "Phiên mặc định",
   "delete": "Xóa",

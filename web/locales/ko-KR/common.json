@@ -19,6 +19,21 @@
     "today": "오늘",
     "topics": "주제"
   },
+  "appLoading": {
+    "appIdle": "시작 준비 중",
+    "appInitializing": "앱을 초기화하는 중...",
+    "failed": "죄송합니다. 애플리케이션 초기화에 실패했습니다. 상세 정보를 확인하여 문제를 해결해 주세요.",
+    "finished": "데이터베이스 초기화 완료",
+    "goToChat": "대화 페이지 로딩 중...",
+    "initAuth": "인증 서비스 초기화 중...",
+    "initUser": "사용자 상태 초기화 중...",
+    "initializing": "PGlite 데이터베이스 초기화 중...",
+    "loadingDependencies": "의존성 초기화 중...",
+    "loadingWasm": "WASM 모듈 로드 중...",
+    "migrating": "데이터베이스 테이블 마이그레이션 중...",
+    "ready": "데이터베이스 준비 완료",
+    "showDetail": "자세히 보기"
+  },
   "defaultAgent": "기본 에이전트",
   "defaultSession": "기본 세션",
   "delete": "삭제",

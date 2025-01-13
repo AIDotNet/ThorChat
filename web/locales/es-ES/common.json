@@ -19,6 +19,21 @@
     "today": "Hoy",
     "topics": "Temas"
   },
+  "appLoading": {
+    "appIdle": "در حال آماده‌سازی برای راه‌اندازی",
+    "appInitializing": "در حال راه‌اندازی برنامه...",
+    "failed": "متأسفیم، راه‌اندازی برنامه با شکست مواجه شد، لطفاً برای بررسی جزئیات به آن مراجعه کنید",
+    "finished": "راه‌اندازی پایگاه داده کامل شد",
+    "goToChat": "در حال بارگذاری صفحه گفتگو...",
+    "initAuth": "در حال راه‌اندازی سرویس احراز هویت...",
+    "initUser": "در حال راه‌اندازی وضعیت کاربر...",
+    "initializing": "در حال راه‌اندازی پایگاه داده PGlite...",
+    "loadingDependencies": "در حال بارگذاری وابستگی‌ها...",
+    "loadingWasm": "در حال بارگذاری ماژول WASM...",
+    "migrating": "در حال اجرای مهاجرت جداول داده...",
+    "ready": "پایگاه داده آماده است",
+    "showDetail": "مشاهده جزئیات"
+  },
   "defaultAgent": "Asistente predeterminado",
   "defaultSession": "Sesión predeterminada",
   "delete": "Eliminar",

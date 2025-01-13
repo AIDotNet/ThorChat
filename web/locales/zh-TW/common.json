@@ -19,6 +19,21 @@
     "today": "今日新增",
     "topics": "話題"
   },
+  "appLoading": {
+    "appIdle": "準備啟動",
+    "appInitializing": "應用啟動中...",
+    "failed": "很抱歉，應用初始化失敗，請查看詳情進行排查",
+    "finished": "資料庫初始化完成",
+    "goToChat": "對話頁面加載中...",
+    "initAuth": "鑑權服務初始化...",
+    "initUser": "用戶狀態初始化...",
+    "initializing": "PGlite 資料庫初始化...",
+    "loadingDependencies": "初始化依賴...",
+    "loadingWasm": "加載 WASM 模組...",
+    "migrating": "執行資料表遷移...",
+    "ready": "資料庫已就緒",
+    "showDetail": "查看詳情"
+  },
   "defaultAgent": "預設助手",
   "defaultSession": "預設助手",
   "delete": "刪除",

@@ -1,11 +1,22 @@
-import { useTranslation } from 'react-i18next';
+'use client';
 
-import FullscreenLoading from '@/components/FullscreenLoading';
+import { useState } from 'react';
 
-const Loading = () => {
-  const { t } = useTranslation('common');
+import { AppLoadingStage } from './stage';
+import Content from './Content';
+import Redirect from './Redirect';
 
-  return <FullscreenLoading title={t('appInitializing')} />;
+const ClientMode = () => {
+  const [activeStage, setActiveStage] = useState<string>(AppLoadingStage.Initializing);
+
+  return (
+    <>
+      <Content loadingStage={activeStage} setActiveStage={setActiveStage} />
+      <Redirect setActiveStage={setActiveStage} />
+    </>
+  );
 };
 
-export default Loading;
+ClientMode.displayName = 'ClientMode';
+
+export default ClientMode;

@@ -19,6 +19,21 @@
     "today": "Today's New",
     "topics": "Topics"
   },
+  "appLoading": {
+    "appIdle": "Listo para iniciar",
+    "appInitializing": "Iniciando la aplicación...",
+    "failed": "Lo siento, la inicialización de la aplicación ha fallado. Por favor, consulta los detalles para investigar.",
+    "finished": "Inicialización de la base de datos completada",
+    "goToChat": "Cargando la página de chat...",
+    "initAuth": "Inicializando el servicio de autenticación...",
+    "initUser": "Inicializando el estado del usuario...",
+    "initializing": "Inicializando la base de datos PGlite...",
+    "loadingDependencies": "Inicializando dependencias...",
+    "loadingWasm": "Cargando módulo WASM...",
+    "migrating": "Ejecutando migración de tablas de datos...",
+    "ready": "Base de datos lista",
+    "showDetail": "Ver detalles"
+  },
   "defaultAgent": "Default Assistant",
   "defaultSession": "Default Assistant",
   "delete": "Delete",

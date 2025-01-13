@@ -1,4 +1,6 @@
 using System.Text.Json;
+using ThorChat.Service.Extensions;
+using ThorChat.Service.Middleware;
 using ThorChat.Service.Model;
 using ThorChat.Service.Options;
 using ThorChat.Service.Service;
@@ -22,10 +24,11 @@ builder.Services
     }));
 
 builder.Services.AddResponseCompression();
-
+builder.Services.AddHttpForwarder();
 builder.Services
     .AddTransient<MarketService>()
     .AddTransient<PluginService>()
+    .AddSingleton<FileMiddleware>()
     .AddTransient<ChatService>()
     .AddCors(options =>
     {
@@ -45,19 +48,89 @@ app.UseResponseCompression();
 
 app.UseDefaultFiles();
 
+app.UseMiddleware<FileMiddleware>();
+
 app.Use(async (context, next) =>
 {
-    await next(context);
+        if (context.Request.Path == "/")
+        {
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "index.html");
+            if (File.Exists(path))
+            {
+                await context.Response.SendFileAsync(path);
+                return;
+            }
+        }
 
-    if (context.Response.StatusCode == 404 && !Path.HasExtension(context.Request.Path.Value))
-    {
-        context.Request.Path = "/index.html";
+        if (context.Request.Path.Value?.EndsWith(".js") == true)
+        {
+            var path = context.Request.Path.Value;
+
+            // 判断是否存在.br文件
+            var brPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", path.TrimStart('/') + ".br");
+            if (File.Exists(brPath))
+            {
+                context.Response.Headers.Append("Content-Encoding", "br");
+                context.Response.Headers.Append("Content-Type", "application/javascript");
+
+                await context.Response.SendFileAsync(brPath);
+
+                return;
+            }
+
+            // 判断是否存在.gz文件
+            var gzPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", path.TrimStart('/') + ".gz");
+            if (File.Exists(gzPath))
+            {
+                context.Response.Headers.Append("Content-Encoding", "gzip");
+                context.Response.Headers.Append("Content-Type", "application/javascript");
+                await context.Response.SendFileAsync(gzPath);
+                return;
+            }
+        }
+        else if (context.Request.Path.Value?.EndsWith(".css") == true)
+        {
+            // 判断是否存在.br文件
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot",
+                context.Request.Path.Value.TrimStart('/'));
+            if (File.Exists(path))
+            {
+                context.Response.Headers.Append("Content-Type", "text/css");
+                await context.Response.SendFileAsync(path);
+                return;
+            }
+        }
+
         await next(context);
-    }
+
+        if (context.Response.StatusCode == 404)
+        {
+            // 判断是否存在文件
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot",
+                context.Request.Path.Value.TrimStart('/'));
+
+            if (File.Exists(path))
+            {
+                context.Response.StatusCode = 200;
+                context.Response.Headers.Append("Content-Type",
+                    HttpContextExtensions.GetContentType(Path.GetExtension(path)));
+                await context.Response.SendFileAsync(path);
+                return;
+            }
+
+            // 返回index.html
+            path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "index.html");
+
+            if (File.Exists(path))
+            {
+                context.Response.StatusCode = 200;
+                await context.Response.SendFileAsync(path);
+                return;
+            }
+        }
 });
 
 app.UseStaticFiles();
-
 
 app.MapGet("/api/market",
     (MarketService service, HttpContext context, string locale) => service.GetAsync(context, locale));

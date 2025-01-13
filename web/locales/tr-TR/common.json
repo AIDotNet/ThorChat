@@ -19,6 +19,21 @@
     "today": "Bugün",
     "topics": "Konular"
   },
+  "appLoading": {
+    "appIdle": "Başlatılıyor",
+    "appInitializing": "Uygulama başlatılıyor...",
+    "failed": "Üzgünüz, uygulama başlatılırken bir hata oluştu, lütfen ayrıntıları kontrol edin ve sorunu giderin.",
+    "finished": "Veritabanı başlatma tamamlandı",
+    "goToChat": "Sohbet sayfası yükleniyor...",
+    "initAuth": "Kimlik doğrulama servisi başlatılıyor...",
+    "initUser": "Kullanıcı durumu başlatılıyor...",
+    "initializing": "PGlite veritabanı başlatılıyor...",
+    "loadingDependencies": "Bağımlılıklar yükleniyor...",
+    "loadingWasm": "WASM modülü yükleniyor...",
+    "migrating": "Veri tablosu taşınıyor...",
+    "ready": "Veritabanı hazır",
+    "showDetail": "Detayları Görüntüle"
+  },
   "defaultAgent": "Varsayılan Asistan",
   "defaultSession": "Varsayılan Asistan",
   "delete": "Sil",

@@ -19,6 +19,21 @@
     "today": "今日の追加",
     "topics": "トピック"
   },
+  "appLoading": {
+    "appIdle": "起動準備中",
+    "appInitializing": "アプリケーションを起動しています...",
+    "failed": "申し訳ありませんが、アプリの初期化に失敗しました。詳細を確認して問題を調査してください。",
+    "finished": "データベースの初期化が完了しました",
+    "goToChat": "チャットページを読み込んでいます...",
+    "initAuth": "認証サービスを初期化しています...",
+    "initUser": "ユーザー状態を初期化しています...",
+    "initializing": "PGliteデータベースを初期化しています...",
+    "loadingDependencies": "依存関係を初期化しています...",
+    "loadingWasm": "WASM モジュールを読み込んでいます...",
+    "migrating": "データテーブルの移行を実行しています...",
+    "ready": "データベースは準備完了です",
+    "showDetail": "詳細を見る"
+  },
   "defaultAgent": "デフォルトエージェント",
   "defaultSession": "デフォルトセッション",
   "delete": "削除",

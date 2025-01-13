@@ -6,15 +6,20 @@ import Footer from '@/features/Setting/Footer';
 import SettingContainer from '@/features/Setting/SettingContainer';
 
 import Header from './Header';
+import { useResponsive } from 'antd-style/lib/hooks';
 
-const Layout = ({ children }: PropsWithChildren) => (
-  <>
-    <Header />
-    <SettingContainer addonAfter={<Footer />} addonBefore={<SafeSpacing height={HEADER_HEIGHT} />}>
-      {children}
-    </SettingContainer>
-  </>
-);
+const Layout = ({ children }: PropsWithChildren) => {
+  return (
+    <>
+      <Header />
+      <SettingContainer
+        addonAfter={<Footer />}
+        addonBefore={<SafeSpacing height={HEADER_HEIGHT} />}>
+        {children}
+      </SettingContainer>
+    </>
+  )
+};
 
 Layout.displayName = 'DesktopSessionSettingsLayout';
 

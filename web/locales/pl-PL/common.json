@@ -19,6 +19,21 @@
     "today": "Dzisiaj",
     "topics": "Tematy"
   },
+  "appLoading": {
+    "appIdle": "Zarządzanie uruchomieniem",
+    "appInitializing": "Aplikacja się uruchamia...",
+    "failed": "Przykro nam, inicjalizacja aplikacji nie powiodła się, proszę sprawdzić szczegóły, aby znaleźć przyczynę.",
+    "finished": "Inicjalizacja bazy danych zakończona",
+    "goToChat": "Ładowanie strony czatu...",
+    "initAuth": "Inicjalizacja usługi autoryzacji...",
+    "initUser": "Inicjalizacja stanu użytkownika...",
+    "initializing": "Inicjalizacja bazy danych PGlite...",
+    "loadingDependencies": "Inicjalizacja zależności...",
+    "loadingWasm": "Ładowanie modułu WASM...",
+    "migrating": "Wykonywanie migracji tabeli danych...",
+    "ready": "Baza danych jest gotowa",
+    "showDetail": "Zobacz szczegóły"
+  },
   "defaultAgent": "Domyślny asystent",
   "defaultSession": "Domyślna sesja",
   "delete": "Usuń",

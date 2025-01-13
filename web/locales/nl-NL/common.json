@@ -19,6 +19,21 @@
     "today": "Vandaag",
     "topics": "Onderwerpen"
   },
+  "appLoading": {
+    "appIdle": "Klaar om te starten",
+    "appInitializing": "Applicatie wordt gestart...",
+    "failed": "Het spijt ons, de applicatie-initialisatie is mislukt. Bekijk de details voor hulp bij het oplossen.",
+    "finished": "Database-initialisatie voltooid",
+    "goToChat": "De chatpagina wordt geladen...",
+    "initAuth": "Authenticatiedienst wordt geïnitialiseerd...",
+    "initUser": "Gebruikersstatus wordt geïnitialiseerd...",
+    "initializing": "PGlite-database wordt geïnitialiseerd...",
+    "loadingDependencies": "Afhankelijkheden worden geïnitialiseerd...",
+    "loadingWasm": "WASM-modules worden geladen...",
+    "migrating": "Gegevens migreren...",
+    "ready": "Database is gereed",
+    "showDetail": "Bekijk details"
+  },
   "defaultAgent": "Standaard assistent",
   "defaultSession": "Standaard assistent",
   "delete": "Verwijderen",
