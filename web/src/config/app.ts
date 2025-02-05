@@ -12,7 +12,7 @@ declare global {
   interface Window {
     thor: {
       DEFAULT_MODEL: string;
-      DEFAULT_AVATAR: string;
+      DEFAULT_AVATAR: string ;
       DEFAULT_INBOX_AVATAR: string;
       DEFAULT_USER_AVATAR: string;
       OPENAI_MODEL_LIST: string;

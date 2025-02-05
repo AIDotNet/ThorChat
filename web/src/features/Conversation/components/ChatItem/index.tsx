@@ -122,7 +122,12 @@ const Item = memo<ChatListItemProps>(({ index, id }) => {
           errorMessage={<ErrorMessageExtra data={item} />}
           fontSize={fontSize}
           loading={generating}
-          message={item.content}
+          message={item.content.startsWith('<think>') ? item.content
+            .replace(/<think>([\s\S]*?)<\/think>/g, (match, p1) => {
+            return p1.split('\n')
+              .map((line: string) => line.trim() ? `> ${line}` : line)
+              .join('\n');
+          }) : item.content}
           messageExtra={<MessageExtra data={item} />}
           onAvatarClick={onAvatarsClick?.(item.role)}
           onChange={(value) => updateMessageContent(item.id, value)}
