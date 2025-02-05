@@ -12,6 +12,8 @@ export const OFFICIAL_SITE = 'https://token-ai.cn/';
 export const getCanonicalUrl = (path: string) => urlJoin(OFFICIAL_URL, path);
 
 export const GITHUB = pkg.homepage;
+
+export const QQ_GROUP = 'https://qm.qq.com/q/HSAmkYPMKO';
 export const GITHUB_ISSUES = urlJoin(GITHUB, 'issues/new/choose');
 export const CHANGELOG = urlJoin(GITHUB, 'blob/main/CHANGELOG.md');
 export const DOCKER_IMAGE = 'https://hub.docker.com/AIDotNet/lobe-chat';
