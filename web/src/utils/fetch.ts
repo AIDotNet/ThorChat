@@ -345,7 +345,10 @@ export const fetchSSE = async (url: string, options: RequestInit & FetchSSEOptio
           }
           else if (value.choices[0].delta && value.choices[0].delta?.content) {
             data = value.choices[0].delta.content;
-          }else{
+          }else if(value.choices[0].delta && value.choices[0].delta?.reasoning_content){
+            data = value.choices[0].delta.reasoning_content.replace('\n', '\n> ');
+          }
+          else{
             data = '';
           }
         } catch (e) {
