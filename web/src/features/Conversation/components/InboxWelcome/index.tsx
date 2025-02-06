@@ -11,6 +11,7 @@ import { featureFlagsSelectors, useServerConfigStore } from '@/store/serverConfi
 
 import AgentsSuggest from './AgentsSuggest';
 import QuestionSuggest from './QuestionSuggest';
+import { DEFAULT_MESSAGE } from '@/const/meta';
 
 const useStyles = createStyles(({ css, responsive }) => ({
   container: css`
@@ -54,7 +55,7 @@ const InboxWelcome = memo(() => {
           <h1 className={styles.title}>{greeting}</h1>
         </Flexbox>
         <Markdown className={styles.desc} variant={'chat'}>
-          {t('guide.defaultMessage')}
+          { DEFAULT_MESSAGE ?? t('guide.defaultMessage')}
         </Markdown>
         {
           showWelcomeSuggest && <>
