@@ -2,6 +2,7 @@ import { z } from 'zod';
 
 import { AgentChatConfigSchema } from '@/types/agent';
 import { LobeMetaDataSchema } from '@/types/meta';
+import { DEFAULT_MODEL } from '@/const/settings';
 
 const fewShotsSchema = z.array(
   z.object({
@@ -26,7 +27,7 @@ const ttsSchema = z.object({
 export const AgentSchema = z.object({
   chatConfig: AgentChatConfigSchema,
   fewShots: fewShotsSchema.optional(),
-  model: z.string().default('gpt-3.5-turbo'),
+  model: z.string().default(DEFAULT_MODEL ?? 'gpt-3.5-turbo'),
   params: z.object({
     frequency_penalty: z.number().default(0).optional(),
     max_tokens: z.number().optional(),

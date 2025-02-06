@@ -2,6 +2,7 @@ import { DEFAULT_AGENT_META } from '@/const/meta';
 import { ModelProvider } from '@/libs/agent-runtime';
 import { LobeAgentChatConfig, LobeAgentConfig, LobeAgentTTSConfig } from '@/types/agent';
 import { UserDefaultAgent } from '@/types/user/settings';
+import { DEFAULT_MODEL } from '.';
 
 export const DEFAUTT_AGENT_TTS_CONFIG: LobeAgentTTSConfig = {
   showAllLocaleVoice: false,
@@ -21,7 +22,7 @@ export const DEFAULT_AGENT_CHAT_CONFIG: LobeAgentChatConfig = {
 
 export const DEFAULT_AGENT_CONFIG: LobeAgentConfig = {
   chatConfig: DEFAULT_AGENT_CHAT_CONFIG,
-  model: 'gpt-3.5-turbo',
+  model: DEFAULT_MODEL??'gpt-3.5-turbo',
   params: {
     frequency_penalty: 0,
     presence_penalty: 0,
