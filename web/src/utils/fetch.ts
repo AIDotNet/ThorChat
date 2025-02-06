@@ -93,16 +93,12 @@ const createSmoothMessage = (params: { onTextUpdate: (delta: string, text: strin
   let outputQueue: string[] = [];
 
   // eslint-disable-next-line no-undef
-  let animationTimeoutId: NodeJS.Timeout | null = null;
   let isAnimationActive = false;
+  let animationTimeoutId: NodeJS.Timeout | null = null;
 
   // when you need to stop the animation, call this function
   const stopAnimation = () => {
     isAnimationActive = false;
-    if (animationTimeoutId !== null) {
-      clearTimeout(animationTimeoutId);
-      animationTimeoutId = null;
-    }
   };
 
   // define startAnimation function to display the text in buffer smooth
@@ -135,7 +131,7 @@ const createSmoothMessage = (params: { onTextUpdate: (delta: string, text: strin
           params.onTextUpdate(charsToAdd, buffer);
 
           // 设置下一个字符的延迟
-          animationTimeoutId = setTimeout(updateText, 16); // 16 毫秒的延迟模拟打字机效果
+          updateText()
         } else {
           // 当所有字符都显示完毕时，清除动画状态
           isAnimationActive = false;
@@ -285,7 +281,12 @@ export const fetchSSE = async (url: string, options: RequestInit & FetchSSEOptio
     },
   });
 
+  const processContent = (content: string) => {
+    return content.replace('\n\n', '\n>');
+  };
+
   try {
+    let firstreasoning = true;
     await fetchEventSource(url, {
       body: options.body,
       fetch: options?.fetcher,
@@ -345,10 +346,15 @@ export const fetchSSE = async (url: string, options: RequestInit & FetchSSEOptio
           }
           else if (value.choices[0].delta && value.choices[0].delta?.content) {
             data = value.choices[0].delta.content;
-          }else if(value.choices[0].delta && value.choices[0].delta?.reasoning_content){
-            data = value.choices[0].delta.reasoning_content.replace('\n', '\n> ');
+          } else if (value.choices[0].delta && value.choices[0].delta?.reasoning_content) {
+            if (firstreasoning) {
+              data = "> " + value.choices[0].delta.reasoning_content;
+              firstreasoning = false;
+            } else {
+              data = processContent(value.choices[0].delta.reasoning_content);
+            }
           }
-          else{
+          else {
             data = '';
           }
         } catch (e) {
