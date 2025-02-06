@@ -282,7 +282,8 @@ export const fetchSSE = async (url: string, options: RequestInit & FetchSSEOptio
   });
 
   const processContent = (content: string) => {
-    return content.replace('\n\n', '\n>');
+    return content.replace(/\n\n/g, '\n>') // 先替换双换行符
+    .replace(/\n(?!>)/g, '\n>');
   };
 
   try {
