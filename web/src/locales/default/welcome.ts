@@ -1,3 +1,5 @@
+import { DEFAULT_MESSAGE } from "@/const/meta";
+
 export default {
   button: {
     import: '导入配置',
@@ -10,7 +12,7 @@ export default {
       title: '新增助理推荐：',
     },
     defaultMessage:
-      '我是您的私人智能助理 TokenChat ，请问现在能帮您做什么？\n如果需要获得更加专业或定制的助手，可以点击 `+` 创建自定义助手',
+      DEFAULT_MESSAGE,
     qa: {
       q01: 'LobeHub 是什么？',
       q02: 'TokenChat 是什么？',

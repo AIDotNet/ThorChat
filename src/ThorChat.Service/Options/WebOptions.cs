@@ -12,6 +12,8 @@ public class WebOptions
                               configuration["Thor:DefaultUserAvatar"];
         DEFAULT_INBOX_AVATAR = Environment.GetEnvironmentVariable("DEFAULT_INBOX_AVATAR") ??
                                configuration["Thor:DefaultInboxAvatar"];
+        
+        DEFAULT_MESSAGE = Environment.GetEnvironmentVariable("DEFAULT_MESSAGE") ?? configuration["Thor:DefaultMessage"];
 
         OPENAI_MODEL_LIST = Environment.GetEnvironmentVariable("OPENAI_MODEL_LIST") ?? string.Empty;
 
@@ -32,6 +34,7 @@ public class WebOptions
             WebOptions.DEFAULT_INBOX_AVATAR,
             WebOptions.DEFAULT_MODEL,
             WebOptions.OPENAI_MODEL_LIST,
+            WebOptions.DEFAULT_MESSAGE
         };
         var script = """
                      <script >
@@ -55,4 +58,7 @@ public class WebOptions
     public static string DEFAULT_INBOX_AVATAR { get; set; } = "🤯";
 
     public static string OPENAI_MODEL_LIST { get; set; }
+
+    public static string DEFAULT_MESSAGE { get; set; } =
+        "我是您的私人智能助理 TokenChat ，请问现在能帮您做什么？\\n如果需要获得更加专业或定制的助手，可以点击 `+` 创建自定义助手";
 }
