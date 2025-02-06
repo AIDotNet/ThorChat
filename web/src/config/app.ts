@@ -16,6 +16,7 @@ declare global {
       DEFAULT_INBOX_AVATAR: string;
       DEFAULT_USER_AVATAR: string;
       OPENAI_MODEL_LIST: string;
+      DEFAULT_MESSAGE:string;
     };
   }
 }

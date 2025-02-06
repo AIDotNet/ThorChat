@@ -26,6 +26,12 @@ public class WebOptions
         }
 
         var body = File.ReadAllText(path);
+        
+        // 判断body里面是否已经有了window.thor
+        if (body.Contains("window.thor"))
+        {
+            return;
+        }
 
         var webEnv = new
         {
