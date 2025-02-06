@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Net;
+using System.Text;
 using System.Text.Json;
 using ThorChat.Service.Model;
 using ThorChat.Service.Options;
@@ -6,7 +7,7 @@ using ThorChat.Service.Utils;
 
 namespace ThorChat.Service.Service;
 
-public class ChatService(IHttpClientFactory httpClientFactory)
+public class ChatService(IHttpClientFactory httpClientFactory, ILogger<ChatService> logger)
 {
     private const string ThorChatAuth = "X-thor-chat-auth";
 
@@ -18,6 +19,13 @@ public class ChatService(IHttpClientFactory httpClientFactory)
 
     public async ValueTask PostAsync(HttpContext context, string provider)
     {
+        var ip = context.Request.Headers["X-Forwarded-For"].FirstOrDefault() ??
+                 context.Connection.RemoteIpAddress?.ToString();
+
+        var userAgent = context.Request.Headers["User-Agent"].FirstOrDefault();
+
+        logger.LogWarning("请求IP：{0} ,请求客户端:{1}", ip, userAgent);
+
         var token = context.Request.Headers[ThorChatAuth];
         if (string.IsNullOrWhiteSpace(token))
         {
@@ -39,118 +47,131 @@ public class ChatService(IHttpClientFactory httpClientFactory)
         context.Response.Headers.ContentType = "text/event-stream";
         var id = "chatcmpl-" + Guid.NewGuid().ToString("N");
 
-        var address = (payload?.Endpoint ?? ThorOptions.OPENAI_PROXY_URL)?.TrimEnd('/');
-        var key = (payload?.ApiKey ?? ThorOptions.OPENAI_API_KEY);
-
-        var httpClient = httpClientFactory.CreateClient("OpenAI");
-        if (provider.Equals("openai", StringComparison.OrdinalIgnoreCase))
+        try
         {
-            using var memoryStream = new MemoryStream();
-            await context.Request.Body.CopyToAsync(memoryStream);
-            var str = Encoding.UTF8.GetString(memoryStream.ToArray());
+            var address = (payload?.Endpoint ?? ThorOptions.OPENAI_PROXY_URL)?.TrimEnd('/');
+            var key = (payload?.ApiKey ?? ThorOptions.OPENAI_API_KEY);
 
-            var response = await httpClient.HttpRequestRaw(address + "/v1/chat/completions", str
-                , key);
-
-            using StreamReader reader = new(await response.Content.ReadAsStreamAsync(context.RequestAborted));
-
-
-            string? line = string.Empty;
-            while ((line = await reader.ReadLineAsync().ConfigureAwait(false)) != null)
+            var httpClient = httpClientFactory.CreateClient("OpenAI");
+            if (provider.Equals("openai", StringComparison.OrdinalIgnoreCase))
             {
-                line += Environment.NewLine;
+                using var memoryStream = new MemoryStream();
+                await context.Request.Body.CopyToAsync(memoryStream);
+                var str = Encoding.UTF8.GetString(memoryStream.ToArray());
 
-                if (line.StartsWith('{'))
+                var response = await httpClient.HttpRequestRaw(address + "/v1/chat/completions", str
+                    , key);
+
+                if (response.StatusCode >= HttpStatusCode.BadRequest)
                 {
+                    context.Response.StatusCode = (int)response.StatusCode;
+                    await context.Response.WriteAsync(string.Format(DataTextTemplate,
+                        "chatcmpl-" + Guid.NewGuid().ToString("N"), await response.Content.ReadAsStringAsync()));
+                    return;
+                }
+
+                using StreamReader reader = new(await response.Content.ReadAsStreamAsync(context.RequestAborted));
+
+
+                string? line = string.Empty;
+                while ((line = await reader.ReadLineAsync().ConfigureAwait(false)) != null)
+                {
+                    line += Environment.NewLine;
+
+                    if (line.StartsWith('{'))
+                    {
+                        await context.Response.WriteAsync(string.Format(DataTextTemplate,
+                            "chatcmpl-" + Guid.NewGuid().ToString("N"), line));
+                        break;
+                    }
+
+                    if (line.StartsWith("data:"))
+                        line = line["data:".Length..];
+
+                    line = line.Trim();
+
+                    if (line == "[DONE]")
+                    {
+                        break;
+                    }
+
+                    if (line.StartsWith(":"))
+                    {
+                        continue;
+                    }
+
+
+                    if (string.IsNullOrWhiteSpace(line)) continue;
+
                     await context.Response.WriteAsync(string.Format(DataTextTemplate,
                         "chatcmpl-" + Guid.NewGuid().ToString("N"), line));
-                    break;
                 }
-
-                if (line.StartsWith("data:"))
-                    line = line["data:".Length..];
-
-                line = line.Trim();
-
-                if (line == "[DONE]")
-                {
-                    break;
-                }
-
-                if (line.StartsWith(":"))
-                {
-                    continue;
-                }
-
-
-                if (string.IsNullOrWhiteSpace(line)) continue;
-
-                await context.Response.WriteAsync(string.Format(DataTextTemplate,
-                    "chatcmpl-" + Guid.NewGuid().ToString("N"), line));
             }
-        }
-        else if (provider.Equals("azure", StringComparison.OrdinalIgnoreCase))
-        {
-            var client = httpClientFactory.CreateClient("OpenAI");
-
-
-            using var memoryStream = new MemoryStream();
-            await context.Request.Body.CopyToAsync(memoryStream);
-            var str = Encoding.UTF8.GetString(memoryStream.ToArray());
-            var model = JsonSerializer.Deserialize<ChatCompletionInput>(str);
-
-            var url = AzureOpenAIFactory.GetAddress(address, payload?.AzureApiVersion!,
-                model!.Model);
-
-            var response = await client.HttpRequestAzureRaw(url,
-                str, key);
-
-            using var stream = new StreamReader(await response.Content.ReadAsStreamAsync(context.RequestAborted));
-
-            using StreamReader reader = new(await response.Content.ReadAsStreamAsync(context.RequestAborted));
-            string? line = string.Empty;
-            while ((line = await reader.ReadLineAsync().ConfigureAwait(false)) != null)
+            else if (provider.Equals("azure", StringComparison.OrdinalIgnoreCase))
             {
-                line += Environment.NewLine;
+                var client = httpClientFactory.CreateClient("OpenAI");
 
-                if (line.StartsWith('{'))
+
+                using var memoryStream = new MemoryStream();
+                await context.Request.Body.CopyToAsync(memoryStream);
+                var str = Encoding.UTF8.GetString(memoryStream.ToArray());
+                var model = JsonSerializer.Deserialize<ChatCompletionInput>(str);
+
+                var url = AzureOpenAIFactory.GetAddress(address, payload?.AzureApiVersion!,
+                    model!.Model);
+
+                var response = await client.HttpRequestAzureRaw(url,
+                    str, key);
+
+                using var stream = new StreamReader(await response.Content.ReadAsStreamAsync(context.RequestAborted));
+
+                using StreamReader reader = new(await response.Content.ReadAsStreamAsync(context.RequestAborted));
+                string? line = string.Empty;
+                while ((line = await reader.ReadLineAsync().ConfigureAwait(false)) != null)
                 {
-                    // 如果是json数据则直接返回
+                    line += Environment.NewLine;
+
+                    if (line.StartsWith('{'))
+                    {
+                        // 如果是json数据则直接返回
+                        await context.Response.WriteAsync(string.Format(DataTextTemplate,
+                            "chatcmpl-" + Guid.NewGuid().ToString("N"), line));
+
+                        break;
+                    }
+
+                    if (line.StartsWith("data:"))
+                        line = line["data:".Length..];
+
+                    line = line.Trim();
+
+                    if (line == "[DONE]")
+                    {
+                        break;
+                    }
+
+                    if (line.StartsWith(":"))
+                    {
+                        continue;
+                    }
+
+
+                    if (string.IsNullOrWhiteSpace(line)) continue;
+
                     await context.Response.WriteAsync(string.Format(DataTextTemplate,
                         "chatcmpl-" + Guid.NewGuid().ToString("N"), line));
-
-                    break;
                 }
-
-                if (line.StartsWith("data:"))
-                    line = line["data:".Length..];
-
-                line = line.Trim();
-
-                if (line == "[DONE]")
-                {
-                    break;
-                }
-
-                if (line.StartsWith(":"))
-                {
-                    continue;
-                }
-
-
-                if (string.IsNullOrWhiteSpace(line)) continue;
-
-                await context.Response.WriteAsync(string.Format(DataTextTemplate,
-                    "chatcmpl-" + Guid.NewGuid().ToString("N"), line));
+            }
+            else
+            {
+                context.Response.StatusCode = StatusCodes.Status404NotFound;
+                return;
             }
         }
-        else
+        finally
         {
-            context.Response.StatusCode = StatusCodes.Status404NotFound;
-            return;
+            await context.Response.WriteAsync(string.Format(DataStopTemplate, id));
         }
-
-        await context.Response.WriteAsync(string.Format(DataStopTemplate, id));
     }
 
     public async ValueTask TextToImage(HttpContext context, string provider, ChatTextToImageInput input)
@@ -185,7 +206,7 @@ public class ChatService(IHttpClientFactory httpClientFactory)
 
             var value = await response.Content.ReadFromJsonAsync<ChatTextToImageResult>();
 
-            await context.Response.WriteAsJsonAsync(value.Data.Select(x=>x.Url));
+            await context.Response.WriteAsJsonAsync(value.Data.Select(x => x.Url));
         }
     }
 
